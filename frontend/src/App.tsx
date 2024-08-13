@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
-import "./output.css"
+import "./styles/output.css"
 
 export default function App() {
   return(
