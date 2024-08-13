@@ -21,7 +21,7 @@ Routes
 ```
 
 | **Methods**| **Route**             | **Description**                        |
-|------------|-----------------------|---------------------------------------|
+|------------|-----------------------|--------------------------------------- |
 | `GET`      | `/api/products`       | 🔍 Obtém uma lista de todos os produtos. |
 | `GET`      | `/api/products/:id`   | 🔍 Obtém um usuário específico pelo ID.  |
 | `POST`     | `/api/products`       | ✏️ Cadastra um novo produto.             |
