@@ -1,4 +1,11 @@
-export default function LoginForm() {
+type LoginFormProps = {
+  email: string,
+  setEmail: (value: string) => void,
+  password: string,
+  setPassword: (value: string) => void,
+}
+
+export default function LoginForm({ email, setEmail, password, setPassword}: LoginFormProps) {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form className="space-y-6">
@@ -11,6 +18,8 @@ export default function LoginForm() {
               name="email"
               id="email"
               required
+              value={email}
+              onChange={({target}) => setEmail(target.value)}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               autoComplete="email" />
           </div>
@@ -26,6 +35,8 @@ export default function LoginForm() {
               name="password"
               id="password"
               required
+              value={password}
+              onChange={({target}) => setPassword(target.value)}
               autoComplete="current-password"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
