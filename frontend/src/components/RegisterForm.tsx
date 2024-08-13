@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 
-export default function RegisterForm() {
+type RegisterFormProps = {
+  name: string,
+  setName: (value: string) => void,
+  email: string,
+  setEmail: (value: string) => void,
+  phoneNumber: string,
+  setPhoneNumber: (value: string) => void,
+  cpf: string,
+  setCpf: (value: string) => void,
+  password: string,
+  setPassword: (value: string) => void,
+};
+
+export default function RegisterForm({ name, setName, email, setEmail, phoneNumber, setPhoneNumber, cpf, setCpf, password, setPassword}: RegisterFormProps) {
   return (
     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
       <form className="space-y-6">
@@ -13,6 +26,8 @@ export default function RegisterForm() {
               id="name"
               name="name"
               required
+              value={name}
+              onChange={({target}) => setName(target.value)}
               autoComplete="name"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -27,6 +42,8 @@ export default function RegisterForm() {
               id="email"
               name="email"
               required
+              value={email}
+              onChange={({target}) => setEmail(target.value)}
               autoComplete="email"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -41,6 +58,8 @@ export default function RegisterForm() {
               id="phoneNumber"
               name="phoneNumber"
               required
+              value={phoneNumber}
+              onChange={({target}) => setPhoneNumber(target.value)}
               autoComplete="tel"
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -55,6 +74,8 @@ export default function RegisterForm() {
               id="cpf"
               name="cpf"
               required
+              value={cpf}
+              onChange={({target}) => setCpf(target.value)}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -68,6 +89,8 @@ export default function RegisterForm() {
               id="password"
               name="password"
               required
+              value={password}
+              onChange={({target}) => setPassword(target.value)}
               className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
