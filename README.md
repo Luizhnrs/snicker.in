@@ -1,2 +1,2 @@
 #Tables
-<img src="assetsdoc/tables_snickerin.png">
+<img src="/assetsdoc/tables_snickerin.png">
