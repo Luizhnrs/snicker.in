@@ -5,7 +5,7 @@ export default function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/auth/login" element={} />
+          <Route path="/auth/login" />
         </Routes>
       </BrowserRouter>
     </>
