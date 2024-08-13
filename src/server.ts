@@ -8,7 +8,7 @@ const route = Router()
 
 app.use(express.json())
 
-route.get('/', (req: Request, res: Response) => {
+route.get('/snickerin', (req: Request, res: Response) => {
   res.json({ message: 'Initial Tests' })
 })
 
