@@ -29,3 +29,18 @@ Routes
 | `DELETE`   | `/api/products/:id`   | ❌ Deleta um produto pelo ID.            |
 
 ```
+
+## Cart
+Routes
+```
+
+| **Methods**| **Route**             | **Description**                        |
+|------------|-----------------------|--------------------------------------- |
+| `GET`      | `/api/cart`           | 🔍 Obtém a lista completa no carrinho. |
+| `POST`     | `/api/cart`           | ✏️ Adiciona um novo produto no carrinho. |
+| `PUT`      | `/api/cart`           | ✏️ Atualiza um produto no carrinho.    |
+| `DELETE`   | `/api/cart`           | ❌ Limpa os items do carrinho.         |
+
+```
+
+
