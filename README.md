@@ -6,6 +6,8 @@ Routes
 
 | **Methods**| **Route**            | **Description**                        |
 |------------|-----------------------|---------------------------------------|
+| `LOGIN`    | `/snickerin/login`    | 👤 Tela de Login.                        |
+| `SIGNUP`   | `/snickerin/signup`   | 👤 Tela de cadastro                      |
 | `GET`      | `/api/users`          | 🔍 Obtém uma lista de todos os usuários. |
 | `GET`      | `/api/me`             | 🔍 Retorna o usuario atualmente logado.  |
 | `GET`      | `/api/users/:id`      | 🔍 Obtém um usuário específico pelo ID.  |
@@ -42,5 +44,18 @@ Routes
 | `DELETE`   | `/api/cart`           | ❌ Limpa os items do carrinho.         |
 
 ```
+## Orders
+Routes
+```
+
+| **Methods**| **Route**             | **Description**                        |
+|------------|-----------------------|--------------------------------------- |
+| `GET`      | `/api/orders/{user}/:id` | 🔍 Lista todos os pedidos do usuario. |
+| `GET`      | `/api/orders`           | ✏️ Atualiza um produto no carrinho.    |
+| `POST`     | `/api/orders`           | ✏️ Cria uma nova compra no carrinho.   |
+
+```
+
+
 
 
