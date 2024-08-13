@@ -23,9 +23,9 @@ Routes
 | **Methods**| **Route**             | **Description**                        |
 |------------|-----------------------|--------------------------------------- |
 | `GET`      | `/api/products`       | 🔍 Obtém uma lista de todos os produtos. |
-| `GET`      | `/api/products/:id`   | 🔍 Obtém um usuário específico pelo ID.  |
+| `GET`      | `/api/products/:id`   | 🔍 Obtém um produto específico pelo ID.  |
 | `POST`     | `/api/products`       | ✏️ Cadastra um novo produto.             |
 | `PUT`      | `/api/products/:id`   | ✏️ Atualiza os dados do produto pelo ID. |
-| `DELETE`   | `/api/products/:id`   | ❌ Deleta um usuário pelo ID.            |
+| `DELETE`   | `/api/products/:id`   | ❌ Deleta um produto pelo ID.            |
 
 ```
