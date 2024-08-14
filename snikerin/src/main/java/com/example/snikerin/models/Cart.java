@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -23,4 +24,9 @@ public class Cart {
     private String items;
     private BigDecimal price;
     private String buyer;
+    private Date createdAt;
+    private Date updatedAt;;
+
+    public Cart(String items, BigDecimal price, String buyer) {
+    }
 }
