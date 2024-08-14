@@ -24,9 +24,12 @@ public class Products {
     private BigDecimal productPrice; ;
     private String productDescription;
     private Boolean productStatus;
-    private String productImagesUrl;
+    private String productImages;
     private String productCategory;
     private String productBrand;
     private boolean productOnSale;
     private BigDecimal productSalePrice;
+
+    public Products(String productName, String productDescription, BigDecimal productPrice, boolean productStatus, String productImage, String productCategory, String productBrand, boolean productOnSale, BigDecimal productSalePrice) {
+    }
 }
