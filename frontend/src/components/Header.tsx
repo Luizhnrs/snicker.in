@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "../styles/header.css"
 
 export default function Header() {
   return (
-    <header>
+    <header className="header-container">
       <div>
         Logo
       </div>
