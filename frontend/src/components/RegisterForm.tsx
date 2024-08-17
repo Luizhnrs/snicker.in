@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 
 type RegisterFormProps = {
@@ -6,14 +7,14 @@ type RegisterFormProps = {
   email: string,
   setEmail: (value: string) => void,
   phoneNumber: string,
-  setPhoneNumber: (value: string) => void,
+  handlePhoneNumberChange: (event: ChangeEvent<HTMLInputElement>) => void,
   cpf: string,
   setCpf: (value: string) => void,
   password: string,
   setPassword: (value: string) => void,
 };
 
-export default function RegisterForm({ name, setName, email, setEmail, phoneNumber, setPhoneNumber, cpf, setCpf, password, setPassword }: RegisterFormProps) {
+export default function RegisterForm({ name, setName, email, setEmail, phoneNumber, handlePhoneNumberChange, cpf, setCpf, password, setPassword }: RegisterFormProps) {
   return (
     <form className="register-form">
 
@@ -54,7 +55,7 @@ export default function RegisterForm({ name, setName, email, setEmail, phoneNumb
             name="phoneNumber"
             required
             value={phoneNumber}
-            onChange={({ target }) => setPhoneNumber(target.value)}
+            onChange={handlePhoneNumberChange}
             placeholder="(99) 9 9999-9999"
             autoComplete="tel"
           />
