@@ -8,7 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   return (
     <main className="login-container">
-      <h1>Login</h1>
+      <h1>SnickerIn</h1>
       <LoginForm email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
       <p className="login-message">
         Não tem uma conta?{' '}

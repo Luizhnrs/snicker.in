@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RegisterForm from "../components/RegisterForm";
+import "../styles/register.css"
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -9,7 +10,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
 
   return (
-    <main>
+    <main className="register-container">
       <div>
         <h1>Register</h1>
       </div>

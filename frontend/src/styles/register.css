@@ -1,0 +1,13 @@
+.register-container {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 0.411);
+}

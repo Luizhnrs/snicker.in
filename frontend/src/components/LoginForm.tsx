@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 type LoginFormProps = {
   email: string,
   setEmail: (value: string) => void,
@@ -17,6 +19,7 @@ export default function LoginForm({ email, setEmail, password, setPassword }: Lo
           required
           value={email}
           onChange={({ target }) => setEmail(target.value)}
+          placeholder="exemplo@exemplo.com"
           autoComplete="email" />
       </div>
       <div className="input-div">
@@ -28,9 +31,11 @@ export default function LoginForm({ email, setEmail, password, setPassword }: Lo
           required
           value={password}
           onChange={({ target }) => setPassword(target.value)}
+          placeholder="exemplo123"
           autoComplete="current-password"
         />
       </div>
+      <Link to="" className="password-forgot"><p>Esqueceu sua senha?</p></Link>
       <button
         type="submit"
         className="login-form-button"
