@@ -9,7 +9,7 @@ type LoginFormProps = {
 
 export default function LoginForm({ email, setEmail, password, setPassword }: LoginFormProps) {
   return (
-    <form>
+    <form className="login-form">
       <div className="input-div">
         <label htmlFor="email">Email</label>
         <input
