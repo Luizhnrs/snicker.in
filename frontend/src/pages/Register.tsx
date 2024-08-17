@@ -25,6 +25,22 @@ export default function Register() {
     }
   };
 
+  const handleCpfChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { target } = event;
+    const { value } = target;
+    let input = value.replace(/\D/g, '');
+    const match = input.match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+
+    if (match) {
+      const formattedCpf = !match[2]
+        ? match[1]
+        : `${match[1]}.${match[2]}${match[3] ? `.${match[3]}` : ''}${match[4] ? `-${match[4]}` : ''}`;
+      setCpf(formattedCpf);
+    } else {
+      setCpf(input);
+    }
+  };
+
   return (
     <main className="register-container">
       <div>
@@ -38,7 +54,7 @@ export default function Register() {
         phoneNumber={phoneNumber}
         handlePhoneNumberChange={handlePhoneNumberChange}
         cpf={cpf}
-        setCpf={setCpf}
+        handleCpfChange={handleCpfChange}
         password={password}
         setPassword={setPassword}
       />

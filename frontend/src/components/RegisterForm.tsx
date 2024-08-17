@@ -9,12 +9,12 @@ type RegisterFormProps = {
   phoneNumber: string,
   handlePhoneNumberChange: (event: ChangeEvent<HTMLInputElement>) => void,
   cpf: string,
-  setCpf: (value: string) => void,
+  handleCpfChange: (event: ChangeEvent<HTMLInputElement>) => void,
   password: string,
   setPassword: (value: string) => void,
 };
 
-export default function RegisterForm({ name, setName, email, setEmail, phoneNumber, handlePhoneNumberChange, cpf, setCpf, password, setPassword }: RegisterFormProps) {
+export default function RegisterForm({ name, setName, email, setEmail, phoneNumber, handlePhoneNumberChange, cpf, handleCpfChange, password, setPassword }: RegisterFormProps) {
   return (
     <form className="register-form">
 
@@ -69,7 +69,7 @@ export default function RegisterForm({ name, setName, email, setEmail, phoneNumb
             name="cpf"
             required
             value={cpf}
-            onChange={({ target }) => setCpf(target.value)}
+            onChange={handleCpfChange}
             placeholder="999.999.999-99"
           />
         </div>
