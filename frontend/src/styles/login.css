@@ -47,7 +47,11 @@
 
 .password-forgot {
   text-align: end;
+  margin: 10px 0;
+  margin-right: -10px;
+}
+
+.password-forgot > a {
   color: rgb(79 70 229);
   font-weight: 500;
-  margin: 50px 0;
 }

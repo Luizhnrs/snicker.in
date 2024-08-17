@@ -35,7 +35,11 @@ export default function LoginForm({ email, setEmail, password, setPassword }: Lo
           autoComplete="current-password"
         />
       </div>
-      <Link to="" className="password-forgot"><p>Esqueceu sua senha?</p></Link>
+      <div className="password-forgot">
+        <Link to="/password-forgot" >
+          <p>Esqueceu sua senha?</p>
+        </Link>
+      </div>
       <button
         type="submit"
         className="login-form-button"
