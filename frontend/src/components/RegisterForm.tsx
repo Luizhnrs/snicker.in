@@ -14,7 +14,18 @@ type RegisterFormProps = {
   setPassword: (value: string) => void,
 };
 
-export default function RegisterForm({ name, setName, email, setEmail, phoneNumber, handlePhoneNumberChange, cpf, handleCpfChange, password, setPassword }: RegisterFormProps) {
+export default function RegisterForm({
+    name,
+    setName,
+    email,
+    setEmail,
+    phoneNumber,
+    handlePhoneNumberChange,
+    cpf,
+    handleCpfChange,
+    password,
+    setPassword
+  }: RegisterFormProps) {
   return (
     <form className="register-form">
 
