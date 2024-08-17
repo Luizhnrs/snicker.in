@@ -12,7 +12,7 @@ export default function Register() {
   return (
     <main className="register-container">
       <div>
-        <h1>Register</h1>
+        <h1>SnickerIn</h1>
       </div>
       <RegisterForm
         name={name}
