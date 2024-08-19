@@ -43,4 +43,6 @@ public class Orders {
     @Column(name = "notes")
     private String notes;
 
+    public Orders(String firstName, String lastName, String email, String phone, String address, String city, String reference, String state, String cep, String country, BigDecimal amount, String notes) {
+    }
 }
