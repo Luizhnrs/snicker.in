@@ -1,12 +1,25 @@
 import { Link } from "react-router-dom";
 import "../styles/header.css"
+import { useState } from "react";
 export default function Header() {
+  const [open, setOpen] = useState(true);
+
+  const openMenu = () => {
+    setOpen(!open);
+    console.log('oi')
+  }
+
   return (
     <header className="header-container">
       <div className="header-logo">
         SnickerIn
       </div>
       <div className="categories">
+        <div className="menu" onClick={openMenu}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+          </svg>
+        </div>
         <Link to="/footwear">
           <p>Calçados</p>
         </Link>

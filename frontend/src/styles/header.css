@@ -80,3 +80,36 @@
 .cart-div>a {
   color: black;
 }
+
+.menu {
+  display: none;
+}
+
+@media only screen and (max-width: 680px) {
+  .header-logo {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+  }
+
+  .menu:hover {
+    cursor: pointer;
+  }
+  
+  .categories>a {
+    display: none;
+  }
+
+  .cart-div {
+    display: none;
+  }
+
+  .search {
+    width: 40vw;
+  }
+}
