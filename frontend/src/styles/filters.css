@@ -1,0 +1,52 @@
+.filters-form {
+  width: 15vw;
+  margin: 0 10px;
+}
+
+.filters-form hr {
+  border: none;
+  height: 1px;
+  background-color: #a5a5a5;
+  margin: 20px 0;
+}
+
+.filters-form .order-by {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.filters-form .order-by button {
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 10;
+  padding: 15px;
+  margin: 0 10px;
+}
+
+.filters-form .colors {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.filters-form .colors label {
+  margin: 0 5px;
+}
+
+.filters-form .brands {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.filters-form .brands select {
+  font-size: 16px;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 3px;
+}

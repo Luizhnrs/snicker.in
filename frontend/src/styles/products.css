@@ -7,6 +7,7 @@
   width: 80vw;
   background-color: white;
   padding-top: 8vh;
+  display: flex;
 }
 
 .products-container > ul {

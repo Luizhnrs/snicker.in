@@ -1,3 +1,4 @@
+import Filters from "../components/Filters";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
 import "../styles/products.css";
@@ -26,10 +27,11 @@ const products = [
 ]
 
 export default function Products() {
-  return(
+  return (
     <main className="products-page">
       <Header />
       <div className="products-container">
+        <Filters />
         <ul>
           {
             products.map((product) => <ProductCard key={`${product.id} ${product.name}`} product={product} />)
