@@ -11,39 +11,3 @@
   background-color: white;
   padding-top: 8vh;
 }
-
-.cart-page table {
-  width: 80%;
-  margin-top: 30px;
-  border-collapse: collapse;
-}
-
-.cart-page th {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.cart-page td {
-  text-align: center;
-  vertical-align: middle;
-  min-height: 10vh;
-  min-width: 10vw;
-}
-
-.table-product {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.subtotal {
-  width: 47%;
-  margin: 20px;
-  display: flex;
-  align-items: end;
-  justify-content: end;
-}
-
-.subtotal p {
-  margin-left: 10px;
-}
