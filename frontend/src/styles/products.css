@@ -8,3 +8,7 @@
   background-color: white;
   padding-top: 8vh;
 }
+
+.products-container > ul {
+  display: flex;
+}

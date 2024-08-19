@@ -1,0 +1,16 @@
+.product-card {
+  width: 25vw;
+}
+
+.product-card  img {
+  width: 100%;
+}
+
+.product-card > a {
+  color: black;
+}
+
+.product-card .no-sale-price {
+  text-decoration: line-through;
+  margin-left: 10px;
+}
