@@ -5,7 +5,7 @@ type ImageSliderProps = {
   images: string[]
 }
 
-const ImageSlider = ({ images }: ImageSliderProps) => {
+export default function ImageSlider({ images }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleMouseEnter = (index: number) => {
@@ -32,5 +32,3 @@ const ImageSlider = ({ images }: ImageSliderProps) => {
     </div>
   );
 };
-
-export default ImageSlider;
