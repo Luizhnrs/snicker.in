@@ -8,8 +8,10 @@
   background-color: white;
   padding-top: 8vh;
   display: flex;
+  justify-content: center;
 }
 
 .products-container > ul {
   display: flex;
+  flex-wrap: wrap;
 }
