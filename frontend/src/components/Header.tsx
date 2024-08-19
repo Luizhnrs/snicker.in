@@ -20,13 +20,13 @@ export default function Header() {
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
           </svg>
         </div>
-        <Link to="/footwear">
+        <Link to="/products/footwear">
           <p>Calçados</p>
         </Link>
-        <Link to="/clothes">
+        <Link to="/products/clothes">
           <p>Roupas</p>
         </Link>
-        <Link to="/accessories">
+        <Link to="/products/accessories">
           <p>Acessórios</p>
         </Link>
       </div>
