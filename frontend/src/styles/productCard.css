@@ -1,0 +1,20 @@
+.product-card {
+  width: 19vw;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px -3px rgb(7, 7, 7);
+  margin: 10px;
+  padding: 10px;
+}
+
+.product-card  img {
+  width: 100%;
+}
+
+.product-card > a {
+  color: black;
+}
+
+.product-card .no-sale-price {
+  text-decoration: line-through;
+  margin-left: 10px;
+}
