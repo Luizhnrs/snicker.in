@@ -9,7 +9,7 @@ type CartTableProps = {
 }
 
 export default function CartTable({products}: CartTableProps) {
-  const {quantityIncrement, quantityDecrement} = useCart();
+  const {quantityIncrement, quantityDecrement, deleteCartProduct} = useCart();
   return (
     <table className="cart-table">
       <thead>
@@ -46,7 +46,7 @@ export default function CartTable({products}: CartTableProps) {
               <td>R$ {price}</td>
               <td>R$ {price}</td>
               <td>
-                <button>
+                <button onClick={() => deleteCartProduct(id, size)}>
                   <img src={trashIcon} alt="Trash Icon" />
                 </button>
               </td>

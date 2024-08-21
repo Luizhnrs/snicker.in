@@ -9,6 +9,7 @@ interface CartContextType {
   saveCartProduct: (cartProduct: CartProductType) => void;
   quantityIncrement: (id: string, size: string) => void;
   quantityDecrement: (id: string, size: string) => void;
+  deleteCartProduct: (id: string, size: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -84,6 +85,17 @@ function CartProvider({children}: CartProviderProps) {
     setLoading(false);
   };
 
+  const deleteCartProduct = (id: string, size: string) => {
+    setLoading(true);
+    const newCart = cartProducts.filter(
+        (product) =>
+          !((product.id === id) &&
+    (product.size === size)));
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    setCartProducts(newCart);
+    setLoading(false);
+  };
+
   useEffect(() => {
     getSavedCart();
   }, []);
@@ -100,6 +112,7 @@ function CartProvider({children}: CartProviderProps) {
         saveCartProduct,
         quantityIncrement,
         quantityDecrement,
+        deleteCartProduct,
       }}>
       {children}
     </CartContext.Provider>
