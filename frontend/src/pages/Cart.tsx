@@ -3,6 +3,7 @@ import CartTable from '../components/CartTable';
 import Header from '../components/Header';
 import ShippingEstimateForm from '../components/ShippingEstimateForm';
 import '../styles/cart.css';
+import DiscountCouponForm from '../components/DiscountCouponForm';
 
 export default function Cart() {
   return (
@@ -12,11 +13,7 @@ export default function Cart() {
         <CartTable />
         <div className="div">
           <ShippingEstimateForm />
-          <form>
-            <p>Cupom de desconto</p>
-            <input type="text" id="cupon" />
-            <button>Aplicar</button>
-          </form>
+          <DiscountCouponForm />
           <div>
             <p>Resumo</p>
             <table>
