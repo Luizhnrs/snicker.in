@@ -43,6 +43,10 @@ public class Orders {
     @Column(name = "notes")
     private String notes;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Orders(String firstName, String lastName, String email, String phone, String address, String city, String reference, String state, String cep, String country, BigDecimal amount, String notes) {
     }
 }
