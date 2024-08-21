@@ -5,7 +5,11 @@ export default function ShippingEstimateForm() {
     <form className="shipping-estimate-form">
       <p>Prazo de entrega</p>
       <div>
-        <input type="text" id="cep" />
+        <input
+          type="text"
+          id="cep"
+          placeholder="00000-000"
+        />
         <button>Calcular</button>
       </div>
       <a
