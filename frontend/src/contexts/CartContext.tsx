@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {createContext, ReactNode, useContext, useState} from 'react';
 import {CartProductType} from '../types/CartProductType';
+import Loading from '../pages/Loading';
 
 interface CartContextType {
   cartProducts: CartProductType[];
@@ -16,6 +17,7 @@ interface CartProviderProps {
 
 function CartProvider({children}: CartProviderProps) {
   const [cartProducts, setCartProducts] = useState<CartProductType[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const getSavedCart = () => {
     const storedCart = localStorage.getItem('cart');
@@ -24,9 +26,11 @@ function CartProvider({children}: CartProviderProps) {
     } else {
       localStorage.setItem('cart', JSON.stringify([]));
     }
+    setLoading(false);
   };
 
   const saveCartProduct = (cartProduct: CartProductType) => {
+    setLoading(true);
     const storedCart= localStorage.getItem('cart');
     if (storedCart) {
       const parsedCart: CartProductType[] = JSON.parse(storedCart);
@@ -34,11 +38,16 @@ function CartProvider({children}: CartProviderProps) {
       localStorage.setItem('cart', JSON.stringify(newCart));
       setCartProducts(newCart);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     getSavedCart();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <CartContext.Provider
