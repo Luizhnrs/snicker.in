@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {createContext, ReactNode, useEffect, useState} from 'react';
+import Loading from '../pages/Loading';
 
 interface AuthContextType {
   token: string;
@@ -41,7 +42,7 @@ function AuthProvider({children}: AuthProviderProps) {
   }, [token]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
