@@ -11,3 +11,11 @@
   background-color: white;
   padding-top: 8vh;
 }
+
+.div {
+  display: flex;
+}
+
+.div form {
+  margin: 10px;
+}
