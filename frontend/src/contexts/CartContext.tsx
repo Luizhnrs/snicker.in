@@ -31,10 +31,23 @@ function CartProvider({children}: CartProviderProps) {
 
   const saveCartProduct = (cartProduct: CartProductType) => {
     setLoading(true);
-    const storedCart= localStorage.getItem('cart');
-    if (storedCart) {
-      const parsedCart: CartProductType[] = JSON.parse(storedCart);
-      const newCart = [...parsedCart, cartProduct];
+    const findProduct = cartProducts
+        .find(
+            (product) =>
+              (product.id === cartProduct.id) &&
+          (product.size === cartProduct.size));
+    if (findProduct) {
+      const newCart = cartProducts.map((product) => {
+        if (product.id === cartProduct.id &&
+          product.size === cartProduct.size) {
+          product.quantity += 1;
+        }
+        return product;
+      });
+      localStorage.setItem('cart', JSON.stringify(newCart));
+      setCartProducts(newCart);
+    } else {
+      const newCart = [...cartProducts, cartProduct];
       localStorage.setItem('cart', JSON.stringify(newCart));
       setCartProducts(newCart);
     }

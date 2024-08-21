@@ -21,16 +21,18 @@ export default function CartTable({products}: CartTableProps) {
       </thead>
       <tbody>
         {
-          products.map(({id, name, price, img, brand, color}) => (
+          products.map(({
+            id, name, price, img, brand, color, size, quantity}) => (
             <tr key={`${id} ${name}`}>
               <td className="table-product">
                 <img src={img} alt="" width="100" />
-                <div>
+                <div className="ps">
                   <p>{brand} {name}</p>
                   <p>Cor: {color}</p>
+                  <p>Tamanho: {size}</p>
                 </div>
               </td>
-              <td>1</td>
+              <td>{quantity}</td>
               <td>R$ {price}</td>
               <td>R$ {price}</td>
               <td>

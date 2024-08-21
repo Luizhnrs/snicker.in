@@ -11,17 +11,20 @@ export default function ProductOptionsForm(
   const {saveCartProduct} = useCart();
   const onClickHandler = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    saveCartProduct({
-      id: product.id,
-      name: product.name,
-      img: product.imgs[0],
-      price: product.price,
-      brand: product.brand,
-      onSale: product.onSale,
-      salePrice: product.salePrice,
-      color: product.color,
-      size: selectedSize,
-    });
+    if (selectedSize) {
+      saveCartProduct({
+        id: product.id,
+        name: product.name,
+        img: product.imgs[0],
+        price: product.price,
+        brand: product.brand,
+        onSale: product.onSale,
+        salePrice: product.salePrice,
+        color: product.color,
+        size: selectedSize,
+        quantity: 1,
+      });
+    }
   };
   return (
     <form>

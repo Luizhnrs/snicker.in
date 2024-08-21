@@ -8,4 +8,5 @@ export type CartProductType = {
   salePrice: number,
   color: string,
   size: string,
+  quantity: number,
 };
