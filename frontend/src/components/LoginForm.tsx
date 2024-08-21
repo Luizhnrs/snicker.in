@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 type LoginFormProps = {
   email: string,
@@ -7,7 +8,11 @@ type LoginFormProps = {
   setPassword: (value: string) => void,
 }
 
-export default function LoginForm({ email, setEmail, password, setPassword }: LoginFormProps) {
+export default function LoginForm({
+  email,
+  setEmail,
+  password,
+  setPassword}: LoginFormProps) {
   return (
     <form className="login-form">
       <div className="input-div">
@@ -18,7 +23,7 @@ export default function LoginForm({ email, setEmail, password, setPassword }: Lo
           id="email"
           required
           value={email}
-          onChange={({ target }) => setEmail(target.value)}
+          onChange={({target}) => setEmail(target.value)}
           placeholder="exemplo@exemplo.com"
           autoComplete="email" />
       </div>
@@ -30,7 +35,7 @@ export default function LoginForm({ email, setEmail, password, setPassword }: Lo
           id="password"
           required
           value={password}
-          onChange={({ target }) => setPassword(target.value)}
+          onChange={({target}) => setPassword(target.value)}
           placeholder="exemplo123"
           autoComplete="current-password"
         />
@@ -46,4 +51,4 @@ export default function LoginForm({ email, setEmail, password, setPassword }: Lo
       >Entrar</button>
     </form>
   );
-};
+}

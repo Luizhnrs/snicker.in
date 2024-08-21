@@ -1,5 +1,6 @@
-import { ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import {ChangeEvent} from 'react';
+import {Link} from 'react-router-dom';
 
 type RegisterFormProps = {
   name: string,
@@ -15,17 +16,17 @@ type RegisterFormProps = {
 };
 
 export default function RegisterForm({
-    name,
-    setName,
-    email,
-    setEmail,
-    phoneNumber,
-    handlePhoneNumberChange,
-    cpf,
-    handleCpfChange,
-    password,
-    setPassword
-  }: RegisterFormProps) {
+  name,
+  setName,
+  email,
+  setEmail,
+  phoneNumber,
+  handlePhoneNumberChange,
+  cpf,
+  handleCpfChange,
+  password,
+  setPassword,
+}: RegisterFormProps) {
   return (
     <form className="register-form">
 
@@ -37,7 +38,7 @@ export default function RegisterForm({
           name="name"
           required
           value={name}
-          onChange={({ target }) => setName(target.value)}
+          onChange={({target}) => setName(target.value)}
           placeholder="Exemplo do exemplo"
           autoComplete="name"
         />
@@ -51,7 +52,7 @@ export default function RegisterForm({
           name="email"
           required
           value={email}
-          onChange={({ target }) => setEmail(target.value)}
+          onChange={({target}) => setEmail(target.value)}
           placeholder="exemplo@exemplo.com"
           autoComplete="email"
         />
@@ -95,7 +96,7 @@ export default function RegisterForm({
           name="password"
           required
           value={password}
-          onChange={({ target }) => setPassword(target.value)}
+          onChange={({target}) => setPassword(target.value)}
           placeholder="exemplo123"
         />
       </div>
@@ -112,5 +113,5 @@ export default function RegisterForm({
       </p>
 
     </form>
-  )
-};
+  );
+}

@@ -1,11 +1,12 @@
-import { useState } from "react";
-import "../styles/imageSlider.css";
+import React from 'react';
+import {useState} from 'react';
+import '../styles/imageSlider.css';
 
 type ImageSliderProps = {
   images: string[]
 }
 
-export default function ImageSlider({ images }: ImageSliderProps) {
+export default function ImageSlider({images}: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleMouseEnter = (index: number) => {
@@ -17,7 +18,7 @@ export default function ImageSlider({ images }: ImageSliderProps) {
       <div className="slider-content">
         <img src={images[currentIndex]} alt="slide" className="slide-image" />
       </div>
-      
+
       <div className="thumbnails">
         {images.map((image, index) => (
           <img
@@ -31,4 +32,4 @@ export default function ImageSlider({ images }: ImageSliderProps) {
       </div>
     </div>
   );
-};
+}

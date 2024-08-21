@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function ShippingEstimateForm() {
   return (
     <form>
@@ -6,4 +8,4 @@ export default function ShippingEstimateForm() {
       <button>Calcular</button>
     </form>
   );
-};
+}

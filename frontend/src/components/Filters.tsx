@@ -1,4 +1,5 @@
-import "../styles/filters.css"
+import React from 'react';
+import '../styles/filters.css';
 
 export default function Filters() {
   return (
@@ -46,4 +47,4 @@ export default function Filters() {
       </div>
     </form>
   );
-};
+}
