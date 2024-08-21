@@ -10,6 +10,7 @@ interface CartContextType {
   quantityIncrement: (id: string, size: string) => void;
   quantityDecrement: (id: string, size: string) => void;
   deleteCartProduct: (id: string, size: string) => void;
+  getCartSize: () => number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -96,6 +97,10 @@ function CartProvider({children}: CartProviderProps) {
     setLoading(false);
   };
 
+  const getCartSize = (): number => {
+    return cartProducts.length;
+  };
+
   useEffect(() => {
     getSavedCart();
   }, []);
@@ -113,6 +118,7 @@ function CartProvider({children}: CartProviderProps) {
         quantityIncrement,
         quantityDecrement,
         deleteCartProduct,
+        getCartSize,
       }}>
       {children}
     </CartContext.Provider>
