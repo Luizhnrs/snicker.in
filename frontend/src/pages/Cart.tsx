@@ -12,7 +12,7 @@ export default function Cart() {
       <Header />
       <div className="cart-container">
         <CartTable />
-        <div className="div">
+        <div className="cart-checkout">
           <ShippingEstimateForm />
           <DiscountCouponForm />
           <CartSummaryTable />
