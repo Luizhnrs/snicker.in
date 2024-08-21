@@ -29,13 +29,11 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "tb_users")
+    @OneToMany(mappedBy = "user")
     private List<Orders> orders;
 
     @ManyToOne
     private Cart cart;
-
-
 
     public User(String firstName, String lastName, String email, String password, String cpfCnpj) {
     }

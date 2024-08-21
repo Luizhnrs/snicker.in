@@ -1,0 +1,28 @@
+# Ignorar diretórios de build e dependências
+node_modules/
+dist/
+build/
+
+# Ignorar arquivos específicos
+*.min.js
+*.test.js
+
+# Ignorar todos os arquivos da pasta 'public'
+public/**
+
+# Ignorar arquivos específicos dentro de um diretório
+src/legacy-code/*.js
+
+# Ignorar arquivos que começam com _
+src/_*.js
+
+# Ignorar o arquivo de configuração do ESLint
+.eslintrc.js
+
+# Ignorar o arquivo de configuração do Webpack (se houver)
+webpack.config.js
+
+# Ignorar o arquivo de configuração do TypeScript (se houver)
+tsconfig.json
+
+# Ignorar outros arquivos de configuração, se necessário

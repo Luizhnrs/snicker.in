@@ -18,7 +18,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user, CreateUserDto dto) {
+    public User createUser(User user) {
         return userRepository.save(user);
     }
 
@@ -26,7 +26,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(UUID id, User user) throws UserNotFoundException {
+    public User getUserById(UUID id) throws UserNotFoundException {
      return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
