@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import ImageSlider from '../components/ImageSlider';
 import '../styles/product.css';
-import {useCart} from '../contexts/CartContext';
+import ProductOptionsForm from '../components/ProductOptionsForm';
 
 const product = {
   id: '8213281382jsandjas',
@@ -18,19 +18,6 @@ const product = {
 
 
 export default function Product() {
-  const {saveCartProduct} = useCart();
-  const onClickHandler = () => {
-    saveCartProduct({
-      id: product.id,
-      name: product.name,
-      img: product.imgs[0],
-      price: product.price,
-      brand: product.brand,
-      onSale: product.onSale,
-      salePrice: product.salePrice,
-      color: product.color,
-    });
-  };
   return (
     <main className="product-page">
       <Header />
@@ -47,20 +34,7 @@ export default function Product() {
               </p> :
               <p>R$ {product.price.toFixed(2)}</p>
           }
-          <div>
-            <p>Selecione um tamanho</p>
-            <ul className="sizes">
-              {
-                product.sizes.map((size) => (
-                  <li key={size}>{size}</li>
-                ))
-              }
-            </ul>
-          </div>
-          <button
-            className="add-cart-button"
-            onClick={onClickHandler}
-          >Adicionar ao carrinho</button>
+          <ProductOptionsForm product={product} />
           <div className="description">
             <article>
               Reconhecendo as raízes do Dunk como o tênis de time universitário
