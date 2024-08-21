@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import ShippingEstimateForm from '../components/ShippingEstimateForm';
 import '../styles/cart.css';
 import DiscountCouponForm from '../components/DiscountCouponForm';
+import CartSummaryTable from '../components/CartSummaryTable';
 
 export default function Cart() {
   return (
@@ -14,32 +15,7 @@ export default function Cart() {
         <div className="div">
           <ShippingEstimateForm />
           <DiscountCouponForm />
-          <div>
-            <p>Resumo</p>
-            <table>
-              <hr />
-              <tr>
-                <th>Valor dos produtos</th>
-                <td>R$</td>
-              </tr>
-              <hr />
-              <tr>
-                <th>Frete</th>
-                <td>Grátis</td>
-              </tr>
-              <hr />
-              <tr>
-                <th>Descontos</th>
-                <td> - R$</td>
-              </tr>
-              <hr />
-              <tr>
-                <th>Total das compras</th>
-                <td>R$</td>
-              </tr>
-            </table>
-            <button>Continuar para o pagamento</button>
-          </div>
+          <CartSummaryTable />
         </div>
       </div>
     </main>
