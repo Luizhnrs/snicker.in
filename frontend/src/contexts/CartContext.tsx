@@ -7,6 +7,8 @@ interface CartContextType {
   cartProducts: CartProductType[];
   setCartProducts: (cartProducts: CartProductType[]) => void;
   saveCartProduct: (cartProduct: CartProductType) => void;
+  quantityIncrement: (id: string, size: string) => void;
+  quantityDecrement: (id: string, size: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -54,6 +56,34 @@ function CartProvider({children}: CartProviderProps) {
     setLoading(false);
   };
 
+  const quantityIncrement = (id: string, size: string) => {
+    setLoading(true);
+    const newCart = cartProducts.map((product) => {
+      if (product.id === id &&
+        product.size === size) {
+        product.quantity += 1;
+      }
+      return product;
+    });
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    setCartProducts(newCart);
+    setLoading(false);
+  };
+
+  const quantityDecrement = (id: string, size: string) => {
+    setLoading(true);
+    const newCart = cartProducts.map((product) => {
+      if (product.id === id &&
+        product.size === size) {
+        product.quantity = product.quantity === 1 ? 1 : product.quantity - 1;
+      }
+      return product;
+    });
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    setCartProducts(newCart);
+    setLoading(false);
+  };
+
   useEffect(() => {
     getSavedCart();
   }, []);
@@ -64,7 +94,13 @@ function CartProvider({children}: CartProviderProps) {
 
   return (
     <CartContext.Provider
-      value={{cartProducts, setCartProducts, saveCartProduct}}>
+      value={{
+        cartProducts,
+        setCartProducts,
+        saveCartProduct,
+        quantityIncrement,
+        quantityDecrement,
+      }}>
       {children}
     </CartContext.Provider>
   );

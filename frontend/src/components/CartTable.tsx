@@ -2,12 +2,14 @@ import React from 'react';
 import '../styles/cartTable.css';
 import trashIcon from '../assets/trash.svg';
 import {CartProductType} from '../types/CartProductType';
+import {useCart} from '../contexts/CartContext';
 
 type CartTableProps = {
   products: CartProductType[],
 }
 
 export default function CartTable({products}: CartTableProps) {
+  const {quantityIncrement, quantityDecrement} = useCart();
   return (
     <table className="cart-table">
       <thead>
@@ -32,7 +34,15 @@ export default function CartTable({products}: CartTableProps) {
                   <p>Tamanho: {size}</p>
                 </div>
               </td>
-              <td>{quantity}</td>
+              <td>
+                <button
+                  className='increment-button'
+                  onClick={() => quantityIncrement(id, size)}>+</button>
+                <p>{quantity}</p>
+                <button
+                  className='decrement-button'
+                  onClick={() => quantityDecrement(id, size)}>-</button>
+              </td>
               <td>R$ {price}</td>
               <td>R$ {price}</td>
               <td>
