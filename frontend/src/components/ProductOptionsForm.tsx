@@ -1,4 +1,4 @@
-import React, {MouseEvent} from 'react';
+import React, {MouseEvent, useState} from 'react';
 import {useCart} from '../contexts/CartContext';
 
 type ProductOptionsFormProps = {
@@ -7,6 +7,7 @@ type ProductOptionsFormProps = {
 
 export default function ProductOptionsForm(
     {product}: ProductOptionsFormProps) {
+  const [selectedSize, setSelectedSize] = useState('');
   const {saveCartProduct} = useCart();
   const onClickHandler = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -19,6 +20,7 @@ export default function ProductOptionsForm(
       onSale: product.onSale,
       salePrice: product.salePrice,
       color: product.color,
+      size: selectedSize,
     });
   };
   return (
@@ -30,7 +32,13 @@ export default function ProductOptionsForm(
             product.sizes.map((size: string) => (
               <li key={size}>
                 <label htmlFor={size}>{size}</label>
-                <input type="radio" name="size" id={size} />
+                <input
+                  type="radio"
+                  name="size"
+                  id={size}
+                  value={size}
+                  onChange={({target}) => setSelectedSize(target.value)}
+                />
               </li>
             ))
           }

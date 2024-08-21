@@ -7,4 +7,5 @@ export type CartProductType = {
   onSale: boolean,
   salePrice: number,
   color: string,
+  size: string,
 };
