@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/filters.css';
+import './filters.css';
 
 export default function Filters() {
   return (

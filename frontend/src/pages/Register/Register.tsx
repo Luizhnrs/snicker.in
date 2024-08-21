@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import RegisterForm from '../components/RegisterForm';
-import '../styles/register.css';
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
+import './register.css';
 
 export default function Register() {
   const [name, setName] = useState('');

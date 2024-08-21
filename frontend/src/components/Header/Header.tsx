@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../styles/header.css';
+import './header.css';
 import {useState} from 'react';
-import burguerMenuIcon from '../assets/burguerMenu.svg';
-import searchIcon from '../assets/search.svg';
-import cartIcon from '../assets/cart.svg';
-import {useCart} from '../contexts/CartContext';
+import burguerMenuIcon from '../../assets/burguerMenu.svg';
+import searchIcon from '../../assets/search.svg';
+import cartIcon from '../../assets/cart.svg';
+import {useCart} from '../../contexts/CartContext';
 
 export default function Header() {
   const [open, setOpen] = useState(true);
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="header-container">
       <div className="header-logo">
-        SnickerIn
+        Logo
       </div>
       <div className="categories">
         <div className="menu" onClick={openMenu}>

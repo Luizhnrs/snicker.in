@@ -1,8 +1,8 @@
 import React from 'react';
-import Filters from '../components/Filters';
-import Header from '../components/Header';
-import ProductCard from '../components/ProductCard';
-import '../styles/products.css';
+import Filters from '../../components/Filters/Filters';
+import Header from '../../components/Header';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import './products.css';
 
 const products = [
   {

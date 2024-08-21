@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/cartTable.css';
-import trashIcon from '../assets/trash.svg';
-import {CartProductType} from '../types/CartProductType';
-import {useCart} from '../contexts/CartContext';
+import './cartTable.css';
+import trashIcon from '../../assets/trash.svg';
+import {useCart} from '../../contexts/CartContext';
+import {CartProductType} from '../../types/CartProductType';
 
 type CartTableProps = {
   products: CartProductType[],

@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
-import ImageSlider from '../components/ImageSlider';
-import '../styles/product.css';
-import ProductOptionsForm from '../components/ProductOptionsForm';
+import Header from '../../components/Header';
+import ImageSlider from '../../components/ImageSlider/ImageSlider';
+import ProductOptionsForm from '../../components/ProductOptionsForm';
+import './product.css';
 
 const product = {
   id: '8213281382jsandjas',

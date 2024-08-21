@@ -1,5 +1,6 @@
 import React, {MouseEvent, useState} from 'react';
-import {useCart} from '../contexts/CartContext';
+import {useCart} from '../../contexts/CartContext';
+
 
 type ProductOptionsFormProps = {
   product: any,
