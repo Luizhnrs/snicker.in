@@ -6,6 +6,7 @@ import '../styles/cart.css';
 import DiscountCouponForm from '../components/DiscountCouponForm';
 import CartSummaryTable from '../components/CartSummaryTable';
 import {useCart} from '../contexts/CartContext';
+import EmptyCart from '../components/EmptyCart';
 
 export default function Cart() {
   const {cartProducts} = useCart();
@@ -13,12 +14,19 @@ export default function Cart() {
     <main className="cart-page">
       <Header />
       <div className="cart-container">
-        <CartTable products={cartProducts} />
-        <div className="cart-checkout">
-          <ShippingEstimateForm />
-          <DiscountCouponForm />
-          <CartSummaryTable />
-        </div>
+        {
+          cartProducts.length > 0 ? (
+            <>
+              <CartTable products={cartProducts} />
+              <div className="cart-checkout">
+                <ShippingEstimateForm />
+                <DiscountCouponForm />
+                <CartSummaryTable />
+              </div>
+            </>
+          ) : <EmptyCart />
+        }
+
       </div>
     </main>
   );
