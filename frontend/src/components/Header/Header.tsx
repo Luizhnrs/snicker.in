@@ -6,6 +6,7 @@ import burguerMenuIcon from '../../assets/burguerMenu.svg';
 import cartIcon from '../../assets/cart.svg';
 import {useCart} from '../../contexts/CartContext';
 import SearchForm from '../SearchForm';
+import HeaderCategories from '../HeaderCategories';
 
 export default function Header() {
   const [open, setOpen] = useState(true);
@@ -21,19 +22,9 @@ export default function Header() {
       <div className="header-logo">
         Logo
       </div>
-      <div className="categories">
-        <div className="menu" onClick={openMenu}>
-          <img src={burguerMenuIcon} alt="Burgue Menu Icon" />
-        </div>
-        <Link to="/products/footwear">
-          <p>Calçados</p>
-        </Link>
-        <Link to="/products/clothes">
-          <p>Roupas</p>
-        </Link>
-        <Link to="/products/accessories">
-          <p>Acessórios</p>
-        </Link>
+      <HeaderCategories />
+      <div className="menu" onClick={openMenu}>
+        <img src={burguerMenuIcon} alt="Burguer Menu Icon" />
       </div>
       <div className="utils">
         <SearchForm />

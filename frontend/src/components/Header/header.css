@@ -13,17 +13,6 @@
   margin: 0 10px;
 }
 
-.categories {
-  display: flex;
-}
-
-.categories>a {
-  color: black;
-  font-size: 18px;
-  padding: 10px;
-  margin: 10px;
-}
-
 .utils {
   display: flex;
 }
@@ -77,10 +66,6 @@
 
   .menu:hover {
     cursor: pointer;
-  }
-  
-  .categories>a {
-    display: none;
   }
 
   .cart-div {
