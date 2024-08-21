@@ -1,28 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './header.css';
-import {useState} from 'react';
-import burguerMenuIcon from '../../assets/burguerMenu.svg';
 import SearchForm from '../SearchForm';
 import HeaderCategories from '../HeaderCategories';
 import HeaderCart from '../HeaderCart';
+import BurguerMenu from '../BurguerMenu';
 
 export default function Header() {
-  const [open, setOpen] = useState(true);
-
-  const openMenu = () => {
-    setOpen(!open);
-  };
-
   return (
     <header className="header-container">
+      <BurguerMenu />
       <div className="header-logo">
         Logo
       </div>
       <HeaderCategories />
-      <div className="menu" onClick={openMenu}>
-        <img src={burguerMenuIcon} alt="Burguer Menu Icon" />
-      </div>
       <div className="utils">
         <SearchForm />
         <HeaderCart />

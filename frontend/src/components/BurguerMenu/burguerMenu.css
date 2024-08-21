@@ -1,0 +1,36 @@
+.burguer-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 680px) {
+  .burguer-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+  }
+
+  .burguer-menu-button{
+    background-color: white;
+  }
+
+  .burguer-menu-button:hover {
+    cursor: pointer;
+  }
+
+  .burguer-menu-list {
+    position: absolute;
+    top: 8vh;
+    left: 0vw;
+    min-height: 92vh;
+    background-color: rgb(235, 235, 235);
+  }
+  
+  .burguer-menu-list-link {
+    color: black;
+  }
+  .burguer-menu-list-link p {
+    margin: 20px 10px;
+    padding: 10px;
+  }
+}
