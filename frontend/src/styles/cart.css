@@ -54,3 +54,19 @@
 .discount {
   color: rgb(0, 102, 17);
 }
+
+.discount-coupon-form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.discount-coupon-form p {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.discount-coupon-form input {
+  margin-right: 10px;
+}
