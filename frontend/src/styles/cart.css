@@ -69,4 +69,28 @@
 
 .discount-coupon-form input {
   margin-right: 10px;
+  width: 120px;
+}
+
+.shipping-estimate-form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-estimate-form p {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.shipping-estimate-form input {
+  margin-right: 10px;
+  width: 120px;
+}
+
+.shipping-estimate-form a {
+  color: rgb(79 70 229);
+  font-weight: 500;
+  margin-top: 15px;
 }
