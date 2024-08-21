@@ -41,36 +41,6 @@
   margin: 0 10px;
 }
 
-.search {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgb(199, 199, 199);
-  border-radius: 50px;
-  padding: 4px;
-  margin: 0 10px;
-}
-
-.search>svg {
-  padding: 8px;
-}
-
-.search>svg:hover {
-  cursor: pointer;
-}
-
-.search>input {
-  width: 100px;
-  padding: 8px 10px;
-  border: none;
-  box-shadow: none;
-}
-
-.search>input:focus {
-  border: none;
-  padding: 8px 10px;
-}
-
 .cart-div {
   display: flex;
   justify-content: center;
@@ -115,9 +85,5 @@
 
   .cart-div {
     display: none;
-  }
-
-  .search {
-    width: 40vw;
   }
 }

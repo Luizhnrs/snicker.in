@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 import './header.css';
 import {useState} from 'react';
 import burguerMenuIcon from '../../assets/burguerMenu.svg';
-import searchIcon from '../../assets/search.svg';
 import cartIcon from '../../assets/cart.svg';
 import {useCart} from '../../contexts/CartContext';
+import SearchForm from '../SearchForm';
 
 export default function Header() {
   const [open, setOpen] = useState(true);
@@ -14,7 +14,6 @@ export default function Header() {
 
   const openMenu = () => {
     setOpen(!open);
-    console.log('oi');
   };
 
   return (
@@ -37,14 +36,7 @@ export default function Header() {
         </Link>
       </div>
       <div className="utils">
-        <form className="search">
-          <img src={searchIcon} alt="Search Icon" />
-          <input
-            type="text"
-            name="search"
-            placeholder="Buscar"
-          />
-        </form>
+        <SearchForm />
         <div className="cart-div">
           <Link to="/cart">
             <img src={cartIcon} alt="Cart Icon" />
