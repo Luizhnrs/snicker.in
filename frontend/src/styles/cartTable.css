@@ -23,14 +23,6 @@
   align-items: center;
 }
 
-.cart-table button {
-  background-color: white;
-}
-
-.cart-table button:hover {
-  background-color: white;
-}
-
-.cart-table svg {
-  color: black;
+.ps {
+  text-align: start;
 }

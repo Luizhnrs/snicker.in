@@ -8,9 +8,9 @@ type RegisterFormProps = {
   email: string,
   setEmail: (value: string) => void,
   phoneNumber: string,
-  handlePhoneNumberChange: (event: ChangeEvent<HTMLInputElement>) => void,
+  setPhoneNumber: (value: string) => void,
   cpf: string,
-  handleCpfChange: (event: ChangeEvent<HTMLInputElement>) => void,
+  setCpf: (value: string) => void,
   password: string,
   setPassword: (value: string) => void,
 };
@@ -21,12 +21,45 @@ export default function RegisterForm({
   email,
   setEmail,
   phoneNumber,
-  handlePhoneNumberChange,
+  setPhoneNumber,
   cpf,
-  handleCpfChange,
+  setCpf,
   password,
   setPassword,
 }: RegisterFormProps) {
+  const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {target} = event;
+    const {value} = target;
+    const input = value.replace(/\D/g, '');
+    const match = input.match(/(\d{0,2})(\d{0,1})(\d{0,4})(\d{0,4})/);
+
+    if (match) {
+      const formattedPhone = !match[2] ?
+        match[1] :
+        `(${match[1]}) ${match[2]}${match[3] ?
+          ` ${match[3]}` : ''}${match[4] ? `-${match[4]}` : ''}`;
+      setPhoneNumber(formattedPhone);
+    } else {
+      setPhoneNumber(input);
+    }
+  };
+
+  const handleCpfChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const {target} = event;
+    const {value} = target;
+    const input = value.replace(/\D/g, '');
+    const match = input.match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
+
+    if (match) {
+      const formattedCpf = !match[2] ?
+        match[1] :
+        `${match[1]}.${match[2]}${match[3] ?
+          `.${match[3]}` : ''}${match[4] ? `-${match[4]}` : ''}`;
+      setCpf(formattedCpf);
+    } else {
+      setCpf(input);
+    }
+  };
   return (
     <form className="register-form">
 

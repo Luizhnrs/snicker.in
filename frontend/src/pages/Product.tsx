@@ -2,9 +2,10 @@ import React from 'react';
 import Header from '../components/Header';
 import ImageSlider from '../components/ImageSlider';
 import '../styles/product.css';
+import ProductOptionsForm from '../components/ProductOptionsForm';
 
 const product = {
-  id: 1,
+  id: '8213281382jsandjas',
   name: 'Dunk low',
   imgs: ['https://www.copclub.com.br/cdn/shop/products/Wethenew-Sneakers-France-Nike-Dunk-Low-University-Blue-DD1391-102-1.0_800x_81d4aafa-9f95-4f99-8532-1ea4dcb214b0_grande.png?v=1622127347', 'https://www.copclub.com.br/cdn/shop/files/jordan-w-air-jordan-1-low-panda_20032224_45173127_2048_1200x.png?v=1685563664'],
   price: 1044.99,
@@ -14,6 +15,7 @@ const product = {
   color: 'blue',
   sizes: ['39', '40', '41', '42'],
 };
+
 
 export default function Product() {
   return (
@@ -32,17 +34,7 @@ export default function Product() {
               </p> :
               <p>R$ {product.price.toFixed(2)}</p>
           }
-          <div>
-            <p>Selecione um tamanho</p>
-            <ul className="sizes">
-              {
-                product.sizes.map((size) => (
-                  <li key={size}>{size}</li>
-                ))
-              }
-            </ul>
-          </div>
-          <button className="add-cart-button">Adicionar ao carrinho</button>
+          <ProductOptionsForm product={product} />
           <div className="description">
             <article>
               Reconhecendo as raízes do Dunk como o tênis de time universitário

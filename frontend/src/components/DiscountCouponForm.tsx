@@ -2,10 +2,16 @@ import React from 'react';
 
 export default function DiscountCouponForm() {
   return (
-    <form>
+    <form className="discount-coupon-form">
       <p>Cupom de desconto</p>
-      <input type="text" id="cupon" />
-      <button>Aplicar</button>
+      <div>
+        <input
+          type="text"
+          id="cupon"
+          placeholder="EXEMPLO123"
+        />
+        <button>Aplicar</button>
+      </div>
     </form>
   );
 }

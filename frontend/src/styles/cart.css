@@ -5,6 +5,7 @@
 
 .cart-container {
   width: 55vw;
+  min-height: 92vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,10 +13,84 @@
   padding-top: 8vh;
 }
 
-.div {
+.cart-checkout {
   display: flex;
 }
 
-.div form {
-  margin: 10px;
+.cart-summary-table {
+  margin: 20px;
+}
+
+.cart-summary-table th {
+  text-align: start;
+  width: 8vw;
+  padding: 5px;
+}
+
+.cart-summary-table td {
+  text-align: end;
+  width: 8vw;
+  padding: 5px;
+}
+
+.cart-summary-table p {
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.cart-summary-table button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cart-summary-table hr {
+  height: 1px;
+  width: 200%;
+  background-color: #3131319d;
+  margin: 10px 0;
+}
+
+.discount {
+  color: rgb(0, 102, 17);
+}
+
+.discount-coupon-form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.discount-coupon-form p {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.discount-coupon-form input {
+  margin-right: 10px;
+  width: 120px;
+}
+
+.shipping-estimate-form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-estimate-form p {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.shipping-estimate-form input {
+  margin-right: 10px;
+  width: 120px;
+}
+
+.shipping-estimate-form a {
+  color: rgb(79 70 229);
+  font-weight: 500;
+  margin-top: 15px;
 }
