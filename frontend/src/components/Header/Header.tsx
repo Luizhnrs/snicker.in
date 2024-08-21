@@ -3,15 +3,12 @@ import {Link} from 'react-router-dom';
 import './header.css';
 import {useState} from 'react';
 import burguerMenuIcon from '../../assets/burguerMenu.svg';
-import cartIcon from '../../assets/cart.svg';
-import {useCart} from '../../contexts/CartContext';
 import SearchForm from '../SearchForm';
 import HeaderCategories from '../HeaderCategories';
+import HeaderCart from '../HeaderCart';
 
 export default function Header() {
   const [open, setOpen] = useState(true);
-
-  const {getCartSize} = useCart();
 
   const openMenu = () => {
     setOpen(!open);
@@ -28,12 +25,7 @@ export default function Header() {
       </div>
       <div className="utils">
         <SearchForm />
-        <div className="cart-div">
-          <Link to="/cart">
-            <img src={cartIcon} alt="Cart Icon" />
-            <p className='cart-size'>{getCartSize()}</p>
-          </Link>
-        </div>
+        <HeaderCart />
         <div className="auth-div">
           <Link to="/auth/login"><p>Entrar</p></Link>
           {'|'}

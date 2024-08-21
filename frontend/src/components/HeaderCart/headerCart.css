@@ -1,0 +1,17 @@
+.header-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.header-cart-link {
+  color: black;
+}
+
+.header-cart-size {
+  font-size: 13px;
+  font-weight: 200;
+  text-align: center;
+  margin-top: -20px;
+}

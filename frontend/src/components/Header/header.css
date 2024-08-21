@@ -30,24 +30,6 @@
   margin: 0 10px;
 }
 
-.cart-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 15px;
-}
-
-.cart-div>a {
-  color: black;
-}
-
-.cart-size {
-  font-size: 13px;
-  font-weight: 200;
-  text-align: center;
-  margin-top: -19px;
-}
-
 .menu {
   display: none;
 }
