@@ -1,0 +1,36 @@
+.cart-table {
+  width: 80%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+.cart-table th {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.cart-table td {
+  text-align: center;
+  vertical-align: middle;
+  height: 10vh;
+  width: 12vw;
+  font-size: 15px;
+}
+
+.table-product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-table button {
+  background-color: white;
+}
+
+.cart-table button:hover {
+  background-color: white;
+}
+
+.cart-table svg {
+  color: black;
+}
