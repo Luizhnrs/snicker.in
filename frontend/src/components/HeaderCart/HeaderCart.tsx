@@ -9,8 +9,10 @@ export default function HeaderCart() {
   return (
     <div className="header-cart">
       <Link to="/cart" className="header-cart-link">
-        <img src={cartIcon} alt="Cart Icon" />
-        <p className='header-cart-size'>{getCartSize()}</p>
+        <div className="header-cart-icon">
+          <img src={cartIcon} alt="Cart Icon" />
+          <div className="header-cart-count">{getCartSize()}</div>
+        </div>
       </Link>
     </div>
   );
