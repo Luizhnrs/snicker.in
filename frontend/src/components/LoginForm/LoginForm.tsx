@@ -1,21 +1,23 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './loginForm.css';
 
 type LoginFormProps = {
-  email: string,
-  setEmail: (value: string) => void,
-  password: string,
-  setPassword: (value: string) => void,
-}
+  email: string;
+  setEmail: (value: string) => void;
+  password: string;
+  setPassword: (value: string) => void;
+};
 
 export default function LoginForm({
   email,
   setEmail,
   password,
-  setPassword}: LoginFormProps) {
+  setPassword,
+}: LoginFormProps) {
   return (
     <form className="login-form">
-      <div className="input-div">
+      <div className="form-group">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -25,9 +27,10 @@ export default function LoginForm({
           value={email}
           onChange={({target}) => setEmail(target.value)}
           placeholder="exemplo@exemplo.com"
-          autoComplete="email" />
+          autoComplete="email"
+        />
       </div>
-      <div className="input-div">
+      <div className="form-group">
         <label htmlFor="password">Senha</label>
         <input
           type="password"
@@ -40,15 +43,14 @@ export default function LoginForm({
           autoComplete="current-password"
         />
       </div>
-      <div className="password-forgot">
-        <Link to="/password-forgot" >
+      <div className="forgot-password">
+        <Link to="/password-forgot">
           <p>Esqueceu sua senha?</p>
         </Link>
       </div>
-      <button
-        type="submit"
-        className="login-form-button"
-      >Entrar</button>
+      <button type="submit" className="login-button">
+        Entrar
+      </button>
     </form>
   );
 }
