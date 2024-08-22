@@ -1,34 +1,88 @@
-.cart-summary-table {
-  width: 30%;
+.summary-container {
+  width: 60%;
   margin: 20px;
 }
 
-.cart-summary-table th {
-  text-align: start;
-  width: 8vw;
-  padding: 5px;
-}
-
-.cart-summary-table td {
-  text-align: end;
-  width: 8vw;
-  padding: 5px;
-}
-
-.cart-summary-table p {
+.summary-title {
   font-size: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: 500;
 }
 
-.cart-summary-table button {
+.summary-table {
   width: 100%;
-  margin-top: 10px;
+  border-collapse: collapse;
 }
 
-.cart-summary-table hr {
-  height: 1px;
-  width: 200%;
-  background-color: #3131319d;
-  margin: 10px 0;
+.summary-header {
+  text-align: start;
+  padding: 15px 0;
+}
+
+.summary-data {
+  text-align: end;
+  padding: 5px;
+}
+
+.summary-row {
+  border-top: 1px solid #3131319d;
+  border-bottom: 1px solid #3131319d;
+}
+
+.discount {
+  color: green; /* Ajuste a cor do desconto conforme necessário */
+}
+
+.summary-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: rgb(90, 81, 255); /* Usar o azul dos botões do login */
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.summary-button:hover {
+  cursor: pointer;
+  background-color: rgba(90, 81, 255, 0.911);
+}
+
+/* Responsividade */
+@media only screen and (max-width: 1200px) {
+  .summary-header,
+  .summary-data {
+    font-size: 16px;
+  }
+
+  .summary-title {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .summary-header,
+  .summary-data {
+    font-size: 14px;
+  }
+
+  .summary-title {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .summary-header,
+  .summary-data {
+    font-size: 12px;
+  }
+
+  .summary-title {
+    font-size: 18px;
+  }
+
+  .summary-button {
+    font-size: 12px;
+  }
 }

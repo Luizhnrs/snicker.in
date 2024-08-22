@@ -3,32 +3,29 @@ import './cartSummaryTable.css';
 
 export default function CartSummaryTable() {
   return (
-    <div className='cart-summary-table'>
-      <p>Resumo</p>
-      <table>
-        <hr />
-        <tr>
-          <th>Valor dos produtos</th>
-          <td>R$ 500,00</td>
-        </tr>
-        <hr />
-        <tr>
-          <th>Frete</th>
-          <td>Grátis</td>
-        </tr>
-        <hr />
-        <tr>
-          <th>Descontos</th>
-          <td className="discount"> - R$ 100,00</td>
-        </tr>
-        <hr />
-        <tr>
-          <th>Total das compras</th>
-          <td>R$ 400,00</td>
-        </tr>
-        <hr />
+    <div className='summary-container'>
+      <p className='summary-title'>Resumo</p>
+      <table className='summary-table'>
+        <tbody>
+          <tr className='summary-row'>
+            <th className='summary-header'>Valor dos produtos</th>
+            <td className='summary-data'>R$ 500,00</td>
+          </tr>
+          <tr className='summary-row'>
+            <th className='summary-header'>Frete</th>
+            <td className='summary-data'>Grátis</td>
+          </tr>
+          <tr className='summary-row'>
+            <th className='summary-header'>Descontos</th>
+            <td className='summary-data discount'>- R$ 100,00</td>
+          </tr>
+          <tr className='summary-row'>
+            <th className='summary-header'>Total das compras</th>
+            <td className='summary-data'>R$ 400,00</td>
+          </tr>
+        </tbody>
       </table>
-      <button>Continuar para o pagamento</button>
+      <button className='summary-button'>Continuar para o pagamento</button>
     </div>
   );
 }
