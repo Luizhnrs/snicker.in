@@ -6,21 +6,22 @@ import HeaderCategories from '../HeaderCategories';
 import HeaderCart from '../HeaderCart';
 import BurguerMenu from '../BurguerMenu';
 
+
 export default function Header() {
   return (
-    <header className="header-container">
+    <header className="header">
       <BurguerMenu />
       <div className="header-logo">
-        Logo
+        <Link to="/">Logo</Link>
       </div>
       <HeaderCategories />
-      <div className="utils">
+      <div className="header-utils">
         <SearchForm />
         <HeaderCart />
-        <div className="auth-div">
-          <Link to="/auth/login"><p>Entrar</p></Link>
-          {'|'}
-          <Link to="/auth/register"><p>Criar Conta</p></Link>
+        <div className="auth-links">
+          <Link to="/auth/login" className="auth-link">Entrar</Link>
+          {' | '}
+          <Link to="/auth/register" className="auth-link">Criar Conta</Link>
         </div>
       </div>
     </header>
