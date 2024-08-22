@@ -1,19 +1,20 @@
 .cart-table {
-  width: 80%;
+  width: 100%;
   margin-top: 30px;
-  border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.cart-table th {
+.cart-table th,
+.cart-table td {
   text-align: center;
-  padding: 20px 0;
+  padding: 10px;
 }
 
 .cart-table td {
-  text-align: center;
   vertical-align: middle;
-  height: 10vh;
-  width: 12vw;
   font-size: 15px;
 }
 
@@ -21,8 +22,100 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 10vh;
+}
+
+.table-product img {
+  max-width: 100px;
 }
 
 .ps {
   text-align: start;
+}
+
+.quantity-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+.quantity-buttons button {
+  padding: 6px;
+  border: 1px solid black;
+  background-color: rgb(90, 81, 255);
+  color: white;
+}
+
+.quantity-buttons button:hover {
+  cursor: pointer;
+  background-color: rgba(90, 81, 255, 0.938);
+}
+
+.quantity-buttons p {
+  padding: 6px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.trash-button {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.trash-button:hover {
+  cursor: pointer;
+}
+
+/* Responsividade */
+@media only screen and (max-width: 1200px) {
+  .cart-table td {
+    font-size: 14px;
+  }
+
+  .quantity-buttons button,
+  .quantity-buttons p {
+    padding: 5px;
+  }
+
+  .table-product img {
+    max-width: 80px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .cart-table td {
+    font-size: 12px;
+  }
+
+  .quantity-buttons button,
+  .quantity-buttons p {
+    padding: 4px;
+  }
+
+  .table-product img {
+    max-width: 60px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .cart-table {
+    font-size: 10px;
+  }
+
+  .quantity-buttons button,
+  .quantity-buttons p {
+    padding: 3px;
+  }
+
+  .table-product img {
+    max-width: 50px;
+  }
+
+  .trash-button {
+    padding: 5px;
+  }
 }

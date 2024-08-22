@@ -1,0 +1,34 @@
+.cart-summary-table {
+  width: 30%;
+  margin: 20px;
+}
+
+.cart-summary-table th {
+  text-align: start;
+  width: 8vw;
+  padding: 5px;
+}
+
+.cart-summary-table td {
+  text-align: end;
+  width: 8vw;
+  padding: 5px;
+}
+
+.cart-summary-table p {
+  font-size: 25px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.cart-summary-table button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cart-summary-table hr {
+  height: 1px;
+  width: 200%;
+  background-color: #3131319d;
+  margin: 10px 0;
+}

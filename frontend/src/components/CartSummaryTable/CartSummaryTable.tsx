@@ -1,4 +1,5 @@
 import React from 'react';
+import './cartSummaryTable.css';
 
 export default function CartSummaryTable() {
   return (
