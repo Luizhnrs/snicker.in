@@ -11,8 +11,8 @@ type CartTableProps = {
 export default function CartTable({products}: CartTableProps) {
   const {quantityIncrement, quantityDecrement, deleteCartProduct} = useCart();
   return (
-    <div className="cart-table">
-      <table>
+    <div className="cart-table-container">
+      <table className="cart-table">
         <thead>
           <tr>
             <th>Produtos</th>
@@ -27,16 +27,17 @@ export default function CartTable({products}: CartTableProps) {
             products.map(({
               id, name, price, img, brand, color, size, quantity}) => (
               <tr key={`${id} ${name}`}>
-                <td className="table-product">
-                  <img src={img} alt={`${name} image`} />
-                  <div className="ps">
+                <td className="product-info">
+                  <img src={img} alt={`${name} image`}
+                    className="product-image"/>
+                  <div className="product-details">
                     <p>{brand} {name}</p>
                     <p>Cor: {color}</p>
                     <p>Tamanho: {size}</p>
                   </div>
                 </td>
                 <td>
-                  <div className='quantity-buttons'>
+                  <div className='quantity-controls'>
                     <button
                       onClick={() => quantityIncrement(id, size)}>+</button>
                     <p>{quantity}</p>
@@ -48,9 +49,9 @@ export default function CartTable({products}: CartTableProps) {
                 <td>R$ {(price * quantity).toFixed(2)}</td>
                 <td>
                   <button
-                    className='trash-button'
+                    className='remove-item-button'
                     onClick={() => deleteCartProduct(id, size)}>
-                    <img src={trashIcon} alt="Trash Icon" />
+                    <img src={trashIcon} alt="Remove Item" />
                   </button>
                 </td>
               </tr>

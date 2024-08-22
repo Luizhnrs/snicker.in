@@ -1,10 +1,14 @@
-.cart-table {
+.cart-table-container {
   width: 100%;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+}
+
+.cart-table {
+  width: 90%;
+  border-collapse: collapse;
 }
 
 .cart-table th,
@@ -18,47 +22,47 @@
   font-size: 15px;
 }
 
-.table-product {
+.product-info {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 10vh;
 }
 
-.table-product img {
+.product-image {
   max-width: 100px;
+  margin-bottom: 10px;
 }
 
-.ps {
+.product-details {
   text-align: start;
 }
 
-.quantity-buttons {
+.quantity-controls {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 13px;
 }
 
-.quantity-buttons button {
+.quantity-controls button {
   padding: 6px;
   border: 1px solid black;
   background-color: rgb(90, 81, 255);
   color: white;
 }
 
-.quantity-buttons button:hover {
+.quantity-controls button:hover {
   cursor: pointer;
   background-color: rgba(90, 81, 255, 0.938);
 }
 
-.quantity-buttons p {
+.quantity-controls p {
   padding: 6px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
 
-.trash-button {
+.remove-item-button {
   padding: 10px;
   background-color: white;
   display: flex;
@@ -66,22 +70,21 @@
   align-items: center;
 }
 
-.trash-button:hover {
+.remove-item-button:hover {
   cursor: pointer;
 }
 
-/* Responsividade */
 @media only screen and (max-width: 1200px) {
   .cart-table td {
     font-size: 14px;
   }
 
-  .quantity-buttons button,
-  .quantity-buttons p {
+  .quantity-controls button,
+  .quantity-controls p {
     padding: 5px;
   }
 
-  .table-product img {
+  .product-image {
     max-width: 80px;
   }
 }
@@ -91,13 +94,17 @@
     font-size: 12px;
   }
 
-  .quantity-buttons button,
-  .quantity-buttons p {
+  .quantity-controls button,
+  .quantity-controls p {
     padding: 4px;
   }
 
-  .table-product img {
+  .product-image {
     max-width: 60px;
+  }
+
+  .product-info {
+    flex-direction: column;
   }
 }
 
@@ -106,16 +113,17 @@
     font-size: 10px;
   }
 
-  .quantity-buttons button,
-  .quantity-buttons p {
+  .quantity-controls button,
+  .quantity-controls p {
     padding: 3px;
   }
 
-  .table-product img {
+  .product-image {
     max-width: 50px;
+    margin-bottom: 5px;
   }
 
-  .trash-button {
+  .remove-item-button {
     padding: 5px;
   }
 }
