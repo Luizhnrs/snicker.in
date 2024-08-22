@@ -1,44 +1,45 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import burguerMenuIcon from '../../assets/burguerMenu.svg';
+import burgerMenuIcon from '../../assets/burgerMenu.svg';
 import arrowIcon from '../../assets/arrow.svg';
-import './burguerMenu.css';
+import './burgerMenu.css';
 
-export default function BurguerMenu() {
-  const [open, setOpen] = useState(false);
-  const openMenu = () => {
-    setOpen(!open);
+export default function BurgerMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
-    <div className="burguer-menu">
-      <button onClick={openMenu} className="burguer-menu-button">
-        <img src={burguerMenuIcon} alt="Burguer Menu Icon" />
+    <div className="burger-menu">
+      <button onClick={toggleMenu} className="burger-menu-button">
+        <img src={burgerMenuIcon} alt="Menu Icon" />
       </button>
-      <ul className={`burguer-menu-list ${open ? 'open' : ''}`}>
+      <ul className={`burger-menu-list ${isOpen ? 'open' : ''}`}>
         <hr />
-        <div className="burguer-menu-categories">
+        <div className="burger-menu-categories">
           <li>
-            <Link to="/products/footwear" onClick={openMenu}>
+            <Link to="/products/footwear" onClick={toggleMenu}>
               <p>CALÇADOS</p>
               <img src={arrowIcon} alt="Arrow Icon" />
             </Link>
           </li>
           <li>
-            <Link to="/products/clothes" onClick={openMenu}>
+            <Link to="/products/clothes" onClick={toggleMenu}>
               <p>ROUPAS</p>
               <img src={arrowIcon} alt="Arrow Icon" />
             </Link>
           </li>
           <li>
-            <Link to="/products/accessories" onClick={openMenu}>
+            <Link to="/products/accessories" onClick={toggleMenu}>
               <p>ACESSÓRIOS</p>
               <img src={arrowIcon} alt="Arrow Icon" />
             </Link>
           </li>
         </div>
         <hr />
-        <div className="burguer-menu-utils">
+        <div className="burger-menu-utils">
           <li>
             <Link to="/cart">
               <p>Carrinho</p>

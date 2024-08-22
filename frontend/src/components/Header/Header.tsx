@@ -4,7 +4,7 @@ import './header.css';
 import SearchForm from '../SearchForm';
 import HeaderCategories from '../HeaderCategories';
 import HeaderCart from '../HeaderCart';
-import BurguerMenu from '../BurguerMenu';
+import BurguerMenu from '../BurgerMenu';
 
 
 export default function Header() {
