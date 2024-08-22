@@ -5,13 +5,13 @@ import './headerCategories.css';
 export default function HeaderCategories() {
   return (
     <div className="header-categories">
-      <Link className="header-categories-link" to="/products/footwear">
+      <Link className="category-link" to="/products/footwear">
         <p>Calçados</p>
       </Link>
-      <Link className="header-categories-link" to="/products/clothes">
+      <Link className="category-link" to="/products/clothes">
         <p>Roupas</p>
       </Link>
-      <Link className="header-categories-link" to="/products/accessories">
+      <Link className="category-link" to="/products/accessories">
         <p>Acessórios</p>
       </Link>
     </div>
