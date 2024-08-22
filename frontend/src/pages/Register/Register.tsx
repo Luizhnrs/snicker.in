@@ -1,7 +1,7 @@
-import React from 'react';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import './register.css';
+import {Link} from 'react-router-dom';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -9,11 +9,10 @@ export default function Register() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [cpf, setCpf] = useState('');
   const [password, setPassword] = useState('');
+
   return (
     <main className="register-container">
-      <div>
-        <h1>Snicker.In</h1>
-      </div>
+      <h1>Snicker.In</h1>
       <RegisterForm
         name={name}
         setName={setName}
@@ -26,6 +25,12 @@ export default function Register() {
         password={password}
         setPassword={setPassword}
       />
+      <p className="register-message">
+        Já tem uma conta?{' '}
+        <Link to="/auth/login" className="register-link">
+          Fazer login
+        </Link>
+      </p>
     </main>
   );
 }

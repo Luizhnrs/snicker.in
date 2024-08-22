@@ -1,18 +1,17 @@
-import React from 'react';
-import {ChangeEvent} from 'react';
-import {Link} from 'react-router-dom';
+import React, {ChangeEvent} from 'react';
+import './registerForm.css';
 
 type RegisterFormProps = {
-  name: string,
-  setName: (value: string) => void,
-  email: string,
-  setEmail: (value: string) => void,
-  phoneNumber: string,
-  setPhoneNumber: (value: string) => void,
-  cpf: string,
-  setCpf: (value: string) => void,
-  password: string,
-  setPassword: (value: string) => void,
+  name: string;
+  setName: (value: string) => void;
+  email: string;
+  setEmail: (value: string) => void;
+  phoneNumber: string;
+  setPhoneNumber: (value: string) => void;
+  cpf: string;
+  setCpf: (value: string) => void;
+  password: string;
+  setPassword: (value: string) => void;
 };
 
 export default function RegisterForm({
@@ -60,10 +59,10 @@ export default function RegisterForm({
       setCpf(input);
     }
   };
+
   return (
     <form className="register-form">
-
-      <div className="input-div">
+      <div className="input-group">
         <label htmlFor="name">Nome Completo</label>
         <input
           type="text"
@@ -77,7 +76,7 @@ export default function RegisterForm({
         />
       </div>
 
-      <div className="input-div">
+      <div className="input-group">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -92,8 +91,8 @@ export default function RegisterForm({
       </div>
 
       <div className="mini-inputs">
-        <div>
-          <label htmlFor="phoneNumber">Nuḿero de Telefone</label>
+        <div className="input-group">
+          <label htmlFor="phoneNumber">Número de Telefone</label>
           <input
             type="text"
             id="phoneNumber"
@@ -106,7 +105,7 @@ export default function RegisterForm({
           />
         </div>
 
-        <div>
+        <div className="input-group">
           <label htmlFor="cpf">CPF</label>
           <input
             type="text"
@@ -120,8 +119,7 @@ export default function RegisterForm({
         </div>
       </div>
 
-
-      <div className="input-div">
+      <div className="input-group">
         <label htmlFor="password">Senha</label>
         <input
           type="password"
@@ -134,17 +132,9 @@ export default function RegisterForm({
         />
       </div>
 
-      <button
-        type="submit"
-      >Criar Conta</button>
-
-      <p className="register-message">
-        Já tem uma conta?{' '}
-        <Link to="/auth/login" className="register-link">
-          Fazer login
-        </Link>
-      </p>
-
+      <button type="submit" className="submit-button">
+        Criar Conta
+      </button>
     </form>
   );
 }
