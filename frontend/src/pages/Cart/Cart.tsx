@@ -23,7 +23,7 @@ export default function Cart() {
               <div className="cart-checkout">
                 <ShippingEstimateForm />
                 <DiscountCouponForm />
-                <CartSummaryTable />
+                <CartSummaryTable products={cartProducts} discount={10}/>
               </div>
             </>
           ) : <EmptyCart />

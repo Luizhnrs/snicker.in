@@ -10,8 +10,8 @@ const product = {
   imgs: ['https://www.copclub.com.br/cdn/shop/products/Wethenew-Sneakers-France-Nike-Dunk-Low-University-Blue-DD1391-102-1.0_800x_81d4aafa-9f95-4f99-8532-1ea4dcb214b0_grande.png?v=1622127347', 'https://www.copclub.com.br/cdn/shop/files/jordan-w-air-jordan-1-low-panda_20032224_45173127_2048_1200x.png?v=1685563664'],
   price: 1044.99,
   brand: 'Nike',
-  onSale: true,
-  salePrice: 0,
+  onSale: false,
+  salePrice: 800,
   color: 'blue',
   sizes: ['39', '40', '41', '42'],
 };
