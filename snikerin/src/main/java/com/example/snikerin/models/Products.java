@@ -37,6 +37,10 @@ public class Products {
     @Column(name = "product_sale_price")
     private BigDecimal productSalePrice;
 
-    public Products(String productName, String productDescription, BigDecimal productPrice, boolean productStatus, String productImage, String productCategory, String productBrand, boolean productOnSale, BigDecimal productSalePrice) {
+    public Products(String productName, BigDecimal productPrice, String productDescription, Boolean productStatus, String productImages, String productCategory, String productBrand, Boolean productOnSale, BigDecimal productSalePrice) {
+    }
+
+    public Object setProductOnSale() {
+        return false;
     }
 }
