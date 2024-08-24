@@ -1,6 +1,5 @@
 package com.example.snikerin.services;
 
-import com.example.snikerin.dtos.CreateUserDto;
 import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.User;
 import com.example.snikerin.repositories.UserRepository;

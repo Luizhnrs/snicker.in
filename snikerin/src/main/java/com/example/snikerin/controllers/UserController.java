@@ -2,7 +2,6 @@ package com.example.snikerin.controllers;
 
 import com.example.snikerin.controllers.Requests.UserRequest;
 import com.example.snikerin.controllers.Responses.UserResponse;
-import com.example.snikerin.dtos.CreateUserDto;
 import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.User;
 import com.example.snikerin.services.UserService;

@@ -32,7 +32,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Orders> orders;
 
-    @ManyToOne
+    @OneToOne
     private Cart cart;
 
     public User(String firstName, String lastName, String email, String password, String cpfCnpj) {
