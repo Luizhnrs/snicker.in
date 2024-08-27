@@ -4,9 +4,11 @@ import {useAuth} from '../../contexts/AuthContext';
 import Header from '../../components/Header';
 import {Link} from 'react-router-dom';
 import gearIcon from '../../assets/gear.svg';
+import {useCart} from '../../contexts/CartContext';
 
 export default function Profile() {
   const {user} = useAuth();
+  const {cartProducts} = useCart();
   return (
     <main className="profile-page">
       <Header />
@@ -29,6 +31,29 @@ export default function Profile() {
               <p>Meus cartões</p>
             </Link>
           </div>
+        </div>
+        <div className="products-list">
+          <h1>Meus pedidos</h1>
+          <div className="order-infos">
+            <h3>Pedido: <span>00000 - 29/10/20laele</span></h3>
+            <Link to="/order/details">
+              <p>Ver detalhes</p>
+            </Link>
+          </div>
+          <ul>
+            {
+              cartProducts.map(({id, img, name, quantity}) => (
+                <li key={`${id} ${name}`}>
+                  <img src={img} alt={`${name} image`} />
+                  <div>
+                    <p className="products-list-name">{name}</p>
+                    <p>Quantidade: {quantity}</p>
+                  </div>
+                  <hr />
+                </li>
+              ))
+            }
+          </ul>
         </div>
       </div>
     </main>
