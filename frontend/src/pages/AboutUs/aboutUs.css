@@ -1,0 +1,28 @@
+.about-page {
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  width: 80vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  padding-top: 8vh;
+  text-align: center;
+}
+
+.about-container article {
+  margin: 100px;
+  font-size: 19px;
+}
+
+.about-container p {
+  margin: 50px;
+}
+
+.about-container h1 {
+  font-size: 50px;
+}

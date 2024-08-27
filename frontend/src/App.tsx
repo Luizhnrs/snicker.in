@@ -5,7 +5,8 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Product from './pages/Product';
-import Cart from './pages/Cart';
+import Cart from './pages/Cart/Cart';
+import AboutUs from './pages/AboutUs';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/auth/register" element={<Register />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/products/:type" element={<Products />} />
+          <Route path="/about" element={<AboutUs />} />
         </Routes>
       </BrowserRouter>
     </>
