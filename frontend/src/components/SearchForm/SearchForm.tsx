@@ -10,7 +10,9 @@ export default function SearchForm() {
 
   const searchProducts = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    navigate(`/products/${search}`);
+    if (search.length > 0) {
+      navigate(`/products/${search}`);
+    }
   };
 
   return (
