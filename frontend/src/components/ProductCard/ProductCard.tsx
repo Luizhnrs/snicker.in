@@ -4,9 +4,9 @@ import './productCard.css';
 
 type ProductCardProps = {
   product: {
-    id: number,
+    id: string,
     name: string,
-    img: string,
+    images: string[],
     price: number,
     brand: string,
     onSale: boolean,
@@ -16,11 +16,11 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({product}: ProductCardProps) {
-  const {id, name, img, price, brand, onSale, salePrice} = product;
+  const {id, name, images, price, brand, onSale, salePrice} = product;
   return (
     <li className="product-card">
       <Link to={`/product/${id}`}>
-        <img src={img} alt={`${brand} ${name} image`} />
+        <img src={images[0]} alt={`${brand} ${name} image`} />
         <p>{brand} - {name}</p>
         { onSale ?
         <p>R$ {salePrice.toFixed(2)}
