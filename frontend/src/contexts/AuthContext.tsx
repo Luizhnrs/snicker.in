@@ -33,8 +33,8 @@ function AuthProvider({children}: AuthProviderProps) {
     setUser({
       fullName: 'Samuel Alves',
       email: 'samucahhh@gmail.com',
-      phoneNumber: '34999190620',
-      cpf: '13023258686',
+      phoneNumber: '(34) 9 9919-0620',
+      cpf: '130.232.586-86',
     });
     setLoading(false);
   };

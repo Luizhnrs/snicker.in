@@ -1,0 +1,24 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-container {
+  width: 80vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding-top: 8vh;
+}
+
+.profile-container h1 {
+  text-align: center;
+  font-size: 45px;
+  margin: 50px;
+}
+
+.profile-container form {
+  width: 50%;
+}
