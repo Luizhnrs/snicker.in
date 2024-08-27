@@ -4,6 +4,7 @@ import {useAuth} from '../../contexts/AuthContext';
 import Header from '../../components/Header';
 import UserForm from '../../components/UserForm';
 import UserCardsForm from '../../components/UserCardsForm';
+import UserAddressForm from '../../components/UserAddressForm';
 
 export default function Profile() {
   const {user} = useAuth();
@@ -19,6 +20,10 @@ export default function Profile() {
         <div className="user-cards">
           <h2>Cartões Salvos</h2>
           <UserCardsForm />
+        </div>
+        <div className="user-addresss">
+          <h2>Endereços</h2>
+          <UserAddressForm />
         </div>
       </div>
     </main>
