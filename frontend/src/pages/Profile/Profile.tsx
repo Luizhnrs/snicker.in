@@ -3,6 +3,7 @@ import './profile.css';
 import {useAuth} from '../../contexts/AuthContext';
 import Header from '../../components/Header';
 import UserForm from '../../components/UserForm';
+import UserCardsForm from '../../components/UserCardsForm';
 
 export default function Profile() {
   const {user} = useAuth();
@@ -10,8 +11,15 @@ export default function Profile() {
     <main className="profile-page">
       <Header />
       <div className="profile-container">
-        <h1>Perfil</h1>
-        <UserForm user={user} />
+        <h1>Olá, {user.fullName}</h1>
+        <div className="user-informations">
+          <h2>Informações Pessoais</h2>
+          <UserForm user={user} />
+        </div>
+        <div className="user-cards">
+          <h2>Cartões Salvos</h2>
+          <UserCardsForm />
+        </div>
       </div>
     </main>
   );
