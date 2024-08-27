@@ -1,12 +1,16 @@
 import React, {MouseEvent, useState} from 'react';
 import searchIcon from '../../assets/search.svg';
 import './searchForm.css';
+import {useNavigate} from 'react-router-dom';
 
 export default function SearchForm() {
   const [search, setSearch] = useState('');
 
+  const navigate = useNavigate();
+
   const searchProducts = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
+    navigate(`/products/${search}`);
   };
 
   return (
