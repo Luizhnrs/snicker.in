@@ -1,8 +1,9 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import './profile.css';
 import {useAuth} from '../../contexts/AuthContext';
 import Header from '../../components/Header';
 import PhoneNumberInput from '../../components/PhoneNumberInput';
+import CPFinput from '../../components/CPFInput';
 
 export default function Profile() {
   const {user} = useAuth();
@@ -10,23 +11,6 @@ export default function Profile() {
   const [email, setEmail] = useState(user.email);
   const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
   const [cpf, setCpf] = useState(user.cpf);
-
-  const handleCpfChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {target} = event;
-    const {value} = target;
-    const input = value.replace(/\D/g, '');
-    const match = input.match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
-
-    if (match) {
-      const formattedCpf = !match[2] ?
-        match[1] :
-        `${match[1]}.${match[2]}${match[3] ?
-          `.${match[3]}` : ''}${match[4] ? `-${match[4]}` : ''}`;
-      setCpf(formattedCpf);
-    } else {
-      setCpf(input);
-    }
-  };
   return (
     <main className="profile-page">
       <Header />
@@ -69,16 +53,7 @@ export default function Profile() {
             </div>
 
             <div className="input-group">
-              <label htmlFor="cpf">CPF</label>
-              <input
-                type="text"
-                id="cpf"
-                name="cpf"
-                required
-                value={cpf}
-                onChange={handleCpfChange}
-                placeholder="999.999.999-99"
-              />
+              <CPFinput cpf={cpf} setCpf={setCpf} />
             </div>
           </div>
           <button type="submit" className="submit-button">
