@@ -9,6 +9,7 @@ import Cart from './pages/Cart/Cart';
 import AboutUs from './pages/AboutUs';
 import Profile from './pages/Profile';
 import ProfileData from './pages/ProfileData';
+import Favorites from './pages/Favorites';
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/profile-data" element={<ProfileData />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
     </>

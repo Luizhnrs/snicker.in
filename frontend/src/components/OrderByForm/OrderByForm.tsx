@@ -7,7 +7,7 @@ type OrderByFormProps = {
 
 export default function OrderByForm({orderBy, setOrderBy}: OrderByFormProps) {
   return (
-    <form className="order-by">
+    <div className="order-by">
       <div>
         <hr />
         <p>Ordenar por</p>
@@ -34,6 +34,6 @@ export default function OrderByForm({orderBy, setOrderBy}: OrderByFormProps) {
           onChange={({target}) => setOrderBy(target.value)}
           id="lowestPrice" />
       </div>
-    </form>
+    </div>
   );
 }
