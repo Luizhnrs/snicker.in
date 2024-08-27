@@ -1,10 +1,12 @@
 import React, {useContext} from 'react';
 import {createContext, ReactNode, useEffect, useState} from 'react';
 import Loading from '../pages/Loading';
+import {User} from '../types/User';
 
 interface AuthContextType {
   token: string;
   setToken: (token: string) => void;
+  user: User;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -15,6 +17,12 @@ interface AuthProviderProps {
 
 function AuthProvider({children}: AuthProviderProps) {
   const [token, setToken] = useState('');
+  const [user, setUser] = useState<User>({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    cpf: '',
+  });
   const [loading, setLoading] = useState(true);
 
   const loadToken = () => {
@@ -22,6 +30,12 @@ function AuthProvider({children}: AuthProviderProps) {
     if (storedToken) {
       setToken(storedToken);
     }
+    setUser({
+      fullName: 'Samuel Alves',
+      email: 'samucahhh@gmail.com',
+      phoneNumber: '34999190620',
+      cpf: '13023258686',
+    });
     setLoading(false);
   };
 
@@ -46,7 +60,7 @@ function AuthProvider({children}: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{token, setToken}}>
+    <AuthContext.Provider value={{token, setToken, user}}>
       {children}
     </AuthContext.Provider>
   );
