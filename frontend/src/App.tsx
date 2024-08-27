@@ -8,6 +8,7 @@ import Product from './pages/Product';
 import Cart from './pages/Cart/Cart';
 import AboutUs from './pages/AboutUs';
 import Profile from './pages/Profile';
+import ProfileData from './pages/ProfileData';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/products/:type" element={<Products />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/profile-data" element={<ProfileData />} />
         </Routes>
       </BrowserRouter>
     </>
