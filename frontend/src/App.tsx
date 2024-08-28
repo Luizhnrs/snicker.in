@@ -23,6 +23,7 @@ export default function App() {
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/product/:productId" element={<Product />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/products/:type" element={<Products />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
