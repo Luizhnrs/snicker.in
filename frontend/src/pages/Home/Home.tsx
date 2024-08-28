@@ -15,6 +15,7 @@ export default function Home() {
         </div>
         <div>
           <h3>Na promoção</h3>
+          <ProductCarousel />
         </div>
       </div>
     </main>
