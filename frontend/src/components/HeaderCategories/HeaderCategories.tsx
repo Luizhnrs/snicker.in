@@ -6,13 +6,13 @@ export default function HeaderCategories() {
   return (
     <div className="header-categories">
       <Link className="category-link" to="/products/footwear">
-        <p>Calçados</p>
+        <p>SNEAKERS</p>
       </Link>
       <Link className="category-link" to="/products/clothes">
-        <p>Roupas</p>
+        <p>ROUPAS</p>
       </Link>
       <Link className="category-link" to="/products/accessories">
-        <p>Acessórios</p>
+        <p>ACESSÓRIOS</p>
       </Link>
     </div>
   );
