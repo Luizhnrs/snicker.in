@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
 import './login.css';
+import logo from '../../assets/logo.jpeg';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ export default function Login() {
 
   return (
     <main className="login-container">
-      <h1>Snicker.In</h1>
+      <img src={logo} alt="Snicker in logo" className="login-logo" />
       <LoginForm
         email={email}
         setEmail={setEmail}

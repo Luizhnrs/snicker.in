@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import './register.css';
 import {Link} from 'react-router-dom';
+import logo from '../../assets/logo.jpeg';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -12,7 +13,7 @@ export default function Register() {
 
   return (
     <main className="register-container">
-      <h1>Snicker.In</h1>
+      <img src={logo} alt="Snicker in logo" className="register-logo" />
       <RegisterForm
         name={name}
         setName={setName}
