@@ -1,5 +1,7 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import './registerForm.css';
+import PhoneNumberInput from '../PhoneNumberInput';
+import CPFinput from '../CPFInput';
 
 type RegisterFormProps = {
   name: string;
@@ -26,40 +28,6 @@ export default function RegisterForm({
   password,
   setPassword,
 }: RegisterFormProps) {
-  const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {target} = event;
-    const {value} = target;
-    const input = value.replace(/\D/g, '');
-    const match = input.match(/(\d{0,2})(\d{0,1})(\d{0,4})(\d{0,4})/);
-
-    if (match) {
-      const formattedPhone = !match[2] ?
-        match[1] :
-        `(${match[1]}) ${match[2]}${match[3] ?
-          ` ${match[3]}` : ''}${match[4] ? `-${match[4]}` : ''}`;
-      setPhoneNumber(formattedPhone);
-    } else {
-      setPhoneNumber(input);
-    }
-  };
-
-  const handleCpfChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {target} = event;
-    const {value} = target;
-    const input = value.replace(/\D/g, '');
-    const match = input.match(/(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,2})/);
-
-    if (match) {
-      const formattedCpf = !match[2] ?
-        match[1] :
-        `${match[1]}.${match[2]}${match[3] ?
-          `.${match[3]}` : ''}${match[4] ? `-${match[4]}` : ''}`;
-      setCpf(formattedCpf);
-    } else {
-      setCpf(input);
-    }
-  };
-
   return (
     <form className="register-form">
       <div className="input-group">
@@ -92,30 +60,14 @@ export default function RegisterForm({
 
       <div className="mini-inputs">
         <div className="input-group">
-          <label htmlFor="phoneNumber">Número de Telefone</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            required
-            value={phoneNumber}
-            onChange={handlePhoneNumberChange}
-            placeholder="(99) 9 9999-9999"
-            autoComplete="tel"
+          <PhoneNumberInput
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
           />
         </div>
 
         <div className="input-group">
-          <label htmlFor="cpf">CPF</label>
-          <input
-            type="text"
-            id="cpf"
-            name="cpf"
-            required
-            value={cpf}
-            onChange={handleCpfChange}
-            placeholder="999.999.999-99"
-          />
+          <CPFinput cpf={cpf} setCpf={setCpf} />
         </div>
       </div>
 

@@ -19,6 +19,10 @@
 }
 
 .register-link {
-  color: rgb(79, 70, 229);
+  color: green;
   font-weight: 500;
+}
+
+.login-logo {
+  max-width: 100px;
 }

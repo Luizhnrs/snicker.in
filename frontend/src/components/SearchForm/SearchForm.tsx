@@ -13,6 +13,7 @@ export default function SearchForm() {
     if (search.length > 0) {
       navigate(`/products/${search}`);
     }
+    setSearch('');
   };
 
   return (

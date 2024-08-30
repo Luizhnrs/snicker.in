@@ -28,7 +28,7 @@
 }
 
 .input-group input:focus {
-  border: 2px solid rgb(79, 70, 229);
+  border: 2px solid green;
   padding: 9px;
   outline: none;
 }
@@ -62,7 +62,7 @@
   border-radius: 7px;
   color: white;
   font-size: 16px;
-  background-color: rgb(79, 70, 229);
+  background-color: rgb(27, 27, 27);
   font-weight: bold;
   border: none;
   transition: background-color 0.3s ease;
@@ -70,7 +70,7 @@
 
 .submit-button:hover {
   cursor: pointer;
-  background-color: rgba(78, 70, 229, 0.9);
+  background-color: rgba(27, 27, 27, 0.856);
 }
 
 @media only screen and (max-width: 680px) {

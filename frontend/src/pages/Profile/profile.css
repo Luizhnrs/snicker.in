@@ -1,0 +1,84 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-container {
+  width: 80vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding-top: 8vh;
+}
+
+.profile-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  height: 10vh;
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px;
+}
+
+.div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.points {
+  color: green;
+}
+
+.div a {
+  color: black;
+}
+
+.div a:hover {
+  text-decoration: underline;
+}
+
+.products-list {
+  min-width: 81%;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.products-list h1 {
+  margin-bottom: 30px;
+}
+
+.products-list ul {
+  width: 100%;
+}
+
+.products-list li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+}
+
+.products-list li > img {
+  width: 100px;
+}
+
+.products-list-name {
+  font-weight: bold;
+}
+
+.order-infos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-infos span {
+  font-weight: 300;
+}

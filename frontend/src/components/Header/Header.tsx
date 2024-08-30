@@ -5,6 +5,7 @@ import SearchForm from '../SearchForm';
 import HeaderCategories from '../HeaderCategories';
 import HeaderCart from '../HeaderCart';
 import BurguerMenu from '../BurgerMenu';
+import logo from '../../assets/logo.jpeg';
 
 
 export default function Header() {
@@ -12,7 +13,9 @@ export default function Header() {
     <header className="header">
       <BurguerMenu />
       <div className="header-logo">
-        <Link to="/">Logo</Link>
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
       </div>
       <HeaderCategories />
       <div className="header-utils">

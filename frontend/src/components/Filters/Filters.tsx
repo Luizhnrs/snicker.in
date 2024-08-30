@@ -1,35 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './filters.css';
+import OrderByForm from '../OrderByForm';
 
 export default function Filters() {
+  const [orderBy, setOrderBy] = useState('');
   return (
     <form className="filters-form">
-      <div className="order-by">
-        <div>
-          <hr />
-          <p>Ordenar por</p>
-          <hr />
-        </div>
-        <div>
-          <button>Menor preço</button>
-          <button>Maior preço</button>
-        </div>
-      </div>
-      <div className="colors">
-        <div>
-          <hr />
-          <p>Cores</p>
-          <hr />
-        </div>
-
-        <div>
-          <input type="checkbox" id="black" name="color" />
-          <label htmlFor="black">Preto</label>
-
-          <input type="checkbox" id="white" name="color" />
-          <label htmlFor="white">Branco</label>
-        </div>
-
+      <div>
+        <OrderByForm orderBy={orderBy} setOrderBy={setOrderBy} />
       </div>
       <div className="brands">
         <div>

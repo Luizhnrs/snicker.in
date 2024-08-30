@@ -1,0 +1,35 @@
+.create-product-page {
+  display: flex;
+  justify-content: center;
+}
+
+.create-product-container {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: white;
+  padding-top: 8vh;
+}
+
+.create-product-form{
+  display: flex;
+  flex-direction: column;
+}
+
+.create-product-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 7px;
+  color: white;
+  font-size: 16px;
+  background-color: rgb(79, 70, 229);
+  font-weight: bold;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.create-product-button:hover {
+  cursor: pointer;
+  background-color: rgba(78, 70, 229, 0.9);
+}
