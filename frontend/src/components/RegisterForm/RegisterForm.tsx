@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import './registerForm.css';
 import PhoneNumberInput from '../PhoneNumberInput';
 import CPFinput from '../CPFInput';
@@ -14,6 +14,7 @@ type RegisterFormProps = {
   setCpf: (value: string) => void;
   password: string;
   setPassword: (value: string) => void;
+  onClickHandler: (event: MouseEvent<HTMLElement>) => void;
 };
 
 export default function RegisterForm({
@@ -27,6 +28,7 @@ export default function RegisterForm({
   setCpf,
   password,
   setPassword,
+  onClickHandler,
 }: RegisterFormProps) {
   return (
     <form className="register-form">
@@ -84,7 +86,11 @@ export default function RegisterForm({
         />
       </div>
 
-      <button type="submit" className="submit-button">
+      <button
+        type="submit"
+        className="submit-button"
+        onClick={onClickHandler}
+      >
         Criar Conta
       </button>
     </form>
