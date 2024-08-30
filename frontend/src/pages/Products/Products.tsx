@@ -20,7 +20,11 @@ export default function Products() {
           .replace(/[\u0300-\u036f]/g, '');
 
       const filterProducts = products.filter((product) => {
-        const megaString = `${product.productName} ${product.productBrand}`
+        const megaString = `${product.productName} 
+        ${product.productBrand} 
+        ${product.productCategory} 
+        ${product.productDescription} 
+        `
             .toLowerCase()
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '');

@@ -5,7 +5,7 @@ import './headerCategories.css';
 export default function HeaderCategories() {
   return (
     <div className="header-categories">
-      <Link className="category-link" to="/products/footwear">
+      <Link className="category-link" to="/products/sneakers">
         <p>SNEAKERS</p>
       </Link>
       <Link className="category-link" to="/products/clothes">
