@@ -1,6 +1,8 @@
 export type User = {
-  fullName: string;
+  id?: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  phoneNumber: string;
-  cpf: string;
+  cpfCnpj: string;
+  password?: string;
 };

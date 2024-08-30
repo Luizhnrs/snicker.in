@@ -31,11 +31,11 @@ const ProductCarousel = () => {
           <div key={index} className="carousel-item">
             <div className="product-card">
               <img
-                src={product.images[0]}
-                alt={product.name}
+                src={product.productImages}
+                alt={product.productName}
                 className="product-image" />
-              <h3 className="product-name">{product.name}</h3>
-              <p className="product-price">{product.price}</p>
+              <h3 className="product-name">{product.productName}</h3>
+              <p className="product-price">{product.productPrice}</p>
             </div>
           </div>
         ))}

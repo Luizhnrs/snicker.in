@@ -7,6 +7,7 @@ interface AuthContextType {
   token: string;
   setToken: (token: string) => void;
   user: User;
+  setUser: (user: User) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -18,10 +19,11 @@ interface AuthProviderProps {
 function AuthProvider({children}: AuthProviderProps) {
   const [token, setToken] = useState('');
   const [user, setUser] = useState<User>({
-    fullName: '',
+    id: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    phoneNumber: '',
-    cpf: '',
+    cpfCnpj: '',
   });
   const [loading, setLoading] = useState(true);
 
@@ -30,12 +32,6 @@ function AuthProvider({children}: AuthProviderProps) {
     if (storedToken) {
       setToken(storedToken);
     }
-    setUser({
-      fullName: 'Samuel Alves',
-      email: 'samucahhh@gmail.com',
-      phoneNumber: '(34) 9 9919-0620',
-      cpf: '130.232.586-86',
-    });
     setLoading(false);
   };
 
@@ -60,7 +56,7 @@ function AuthProvider({children}: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{token, setToken, user}}>
+    <AuthContext.Provider value={{token, setToken, user, setUser}}>
       {children}
     </AuthContext.Provider>
   );

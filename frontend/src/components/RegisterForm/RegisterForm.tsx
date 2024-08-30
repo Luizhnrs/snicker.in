@@ -1,44 +1,59 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import './registerForm.css';
-import PhoneNumberInput from '../PhoneNumberInput';
 import CPFinput from '../CPFInput';
 
 type RegisterFormProps = {
-  name: string;
-  setName: (value: string) => void;
+  firstName: string,
+  setFirstName: (value: string) => void;
+  lastName: string;
+  setLastName: (value: string) => void;
   email: string;
   setEmail: (value: string) => void;
-  phoneNumber: string;
-  setPhoneNumber: (value: string) => void;
-  cpf: string;
-  setCpf: (value: string) => void;
+  cpfCnpj: string;
+  setCpfCnpj: (value: string) => void;
   password: string;
   setPassword: (value: string) => void;
+  onClickHandler: (event: MouseEvent<HTMLElement>) => void;
 };
 
 export default function RegisterForm({
-  name,
-  setName,
+  firstName,
+  setFirstName,
+  lastName,
+  setLastName,
   email,
   setEmail,
-  phoneNumber,
-  setPhoneNumber,
-  cpf,
-  setCpf,
+  cpfCnpj,
+  setCpfCnpj,
   password,
   setPassword,
+  onClickHandler,
 }: RegisterFormProps) {
   return (
     <form className="register-form">
       <div className="input-group">
-        <label htmlFor="name">Nome Completo</label>
+        <label htmlFor="firstName">Nome</label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="firstName"
+          name="firstName"
           required
-          value={name}
-          onChange={({target}) => setName(target.value)}
+          value={firstName}
+          onChange={({target}) => setFirstName(target.value)}
+          placeholder="Exemplo"
+          autoComplete="name"
+        />
+      </div>
+
+      <div className="input-group">
+        <label htmlFor="lastName">Sobrenome</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          required
+          value={lastName}
+          onChange={({target}) => setLastName(target.value)}
           placeholder="Exemplo do exemplo"
           autoComplete="name"
         />
@@ -60,14 +75,7 @@ export default function RegisterForm({
 
       <div className="mini-inputs">
         <div className="input-group">
-          <PhoneNumberInput
-            phoneNumber={phoneNumber}
-            setPhoneNumber={setPhoneNumber}
-          />
-        </div>
-
-        <div className="input-group">
-          <CPFinput cpf={cpf} setCpf={setCpf} />
+          <CPFinput cpf={cpfCnpj} setCpf={setCpfCnpj} />
         </div>
       </div>
 
@@ -84,7 +92,11 @@ export default function RegisterForm({
         />
       </div>
 
-      <button type="submit" className="submit-button">
+      <button
+        type="submit"
+        className="submit-button"
+        onClick={onClickHandler}
+      >
         Criar Conta
       </button>
     </form>

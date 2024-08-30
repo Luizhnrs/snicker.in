@@ -16,7 +16,7 @@ export default function Profile() {
         <div className="div">
           <div className="profile-card">
             <div>
-              <h3>Bem-vindo, {user.fullName}</h3>
+              <h3>Bem-vindo, {user.firstName}</h3>
               <p>{user.email}</p>
             </div>
             <Link to="/profile/profile-data">
