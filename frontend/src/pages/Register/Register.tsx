@@ -12,6 +12,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [cpfCnpj, setCpfCnpj] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const {setUser} = useAuth();
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ export default function Register() {
       });
       navigate('/');
     } catch (error) {
-      console.log(error);
+      setErrorMessage('Ocorreu um erro!');
     }
   };
 
@@ -55,6 +56,9 @@ export default function Register() {
         setPassword={setPassword}
         onClickHandler={onClickHandler}
       />
+      <p className="error-message">
+        {errorMessage}
+      </p>
       <p className="register-message">
         Já tem uma conta?{' '}
         <Link to="/auth/login" className="register-link">
