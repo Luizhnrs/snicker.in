@@ -1,32 +1,31 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './productCard.css';
+import {ProductType} from '../../types/ProductType';
 
 type ProductCardProps = {
-  product: {
-    id: string,
-    name: string,
-    images: string[],
-    price: number,
-    brand: string,
-    onSale: boolean,
-    salePrice: number,
-    color: string,
-  },
+  product: ProductType
 };
 
 export default function ProductCard({product}: ProductCardProps) {
-  const {id, name, images, price, brand, onSale, salePrice} = product;
+  const {
+    productId,
+    productBrand,
+    productName,
+    productImages,
+    productPrice,
+    productOnSale,
+    productSalePrice} = product;
   return (
     <li className="product-card">
-      <Link to={`/product/${id}`}>
-        <img src={images[0]} alt={`${brand} ${name} image`} />
-        <p>{brand} - {name}</p>
-        { onSale ?
-        <p>R$ {salePrice.toFixed(2)}
-          <span className="no-sale-price">R$ {price.toFixed(2)}</span>
+      <Link to={`/product/${productId}`}>
+        <img src={productImages} alt={`${productBrand} ${productName} image`} />
+        <p>{productBrand} - {productName}</p>
+        { productOnSale ?
+        <p>R$ {productSalePrice.toFixed(2)}
+          <span className="no-sale-price">R$ {productPrice.toFixed(2)}</span>
         </p> :
-        <p>R$ {price.toFixed(2)}</p> }
+        <p>R$ {productPrice.toFixed(2)}</p> }
       </Link>
     </li>
   );

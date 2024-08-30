@@ -20,7 +20,7 @@ export default function Products() {
           .replace(/[\u0300-\u036f]/g, '');
 
       const filterProducts = products.filter((product) => {
-        const megaString = `${product.name} ${product.brand}`
+        const megaString = `${product.productName} ${product.productBrand}`
             .toLowerCase()
             .normalize('NFD')
             .replace(/[\u0300-\u036f]/g, '');
@@ -42,7 +42,7 @@ export default function Products() {
         <ul>
           {filteredProducts.map((product) => (
             <ProductCard
-              key={product.id}
+              key={product.productId}
               product={product}
             />
           ))}
