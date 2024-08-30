@@ -13,7 +13,7 @@
 }
 
 .category-link:hover {
-  color: rgb(79, 70, 229);
+  color: green;
 }
 
 @media only screen and (max-width: 1200px) {

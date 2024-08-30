@@ -24,14 +24,16 @@ const ProductCarousel = () => {
       <div
         className="carousel-content"
         style={
-          {transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`}}
+          {
+            transform: `translateX(-${currentIndex * (70 + 10)}px)`}}
       >
         {products.map((product, index) => (
           <div key={index} className="carousel-item">
             <div className="product-card">
               <img
                 src={product.images[0]}
-                alt={product.name} className="product-image" />
+                alt={product.name}
+                className="product-image" />
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">{product.price}</p>
             </div>

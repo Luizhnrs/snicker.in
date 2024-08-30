@@ -1,8 +1,8 @@
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 1200px; /* Define uma largura máxima */
-  margin: 0 auto; /* Centraliza o carrossel na tela */
+  max-width: 1200px;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -12,34 +12,41 @@
 }
 
 .carousel-item {
-  flex: 0 0 calc(100% / 3); /* Mostra 3 itens por vez */
+  flex: 0 0 auto;
+  max-width: 150px;
+  height: 250px;
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
 .product-card {
-  padding: 16px;
+  width: 100%;
+  height: 100%;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .product-image {
   width: 100%;
-  height: auto;
-  margin-bottom: 16px;
+  height: 60px;
+  object-fit: contain; 
+  margin-bottom: 8px;
 }
 
 .product-name {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .product-price {
   color: #555;
-  font-size: 16px;
+  font-size: 10px; 
 }
 
 .carousel-button {
@@ -52,7 +59,7 @@
   padding: 10px;
   cursor: pointer;
   border-radius: 50%;
-  z-index: 1; /* Garante que os botões fiquem sobre o conteúdo */
+  z-index: 1;
 }
 
 .left-button {

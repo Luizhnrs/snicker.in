@@ -16,12 +16,12 @@
   margin: 20px;
   padding: 20px 60px;
   border-radius: 30px;
-  border: 1px solid rgb(79 70 229);
-  color: rgb(79 70 229);
-  font-weight: 500;
+  border: 1px solid green;
+  color: green;
+  font-weight: 700;
 }
 
 .empty-cart-button:hover {
-  background-color: rgb(79 70 229);
+  background-color: green;
   color: white;
 }
