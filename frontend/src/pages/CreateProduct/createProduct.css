@@ -12,6 +12,11 @@
   padding-top: 8vh;
 }
 
+.create-product-container img {
+  max-width: 300px;
+  max-height: 300px;
+}
+
 .create-product-form{
   display: flex;
   flex-direction: column;
