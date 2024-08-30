@@ -1,30 +1,39 @@
 import React, {MouseEvent, useState} from 'react';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import './register.css';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../assets/logo.jpeg';
-import api from '../../services/api';
+import {registerUser} from '../../services/userService';
+import {useAuth} from '../../contexts/AuthContext';
 
 export default function Register() {
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [cpf, setCpf] = useState('');
+  const [cpfCnpj, setCpfCnpj] = useState('');
   const [password, setPassword] = useState('');
+
+  const {setUser} = useAuth();
+  const navigate = useNavigate();
 
   const onClickHandler = async (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
     try {
-      await api.post(
-          '/users',
-          {
-            firstName: name,
-            lastName: name,
-            cpfCnpj: cpf,
-            email,
-            password,
-          },
-      );
+      const newUser = await registerUser({
+        firstName,
+        lastName,
+        email,
+        cpfCnpj,
+        password,
+      });
+      setUser({
+        id: newUser.id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        cpfCnpj: newUser.cpfCnpj,
+      });
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -34,14 +43,14 @@ export default function Register() {
     <main className="register-container">
       <img src={logo} alt="Snicker in logo" className="register-logo" />
       <RegisterForm
-        name={name}
-        setName={setName}
+        firstName={firstName}
+        setFirstName={setFirstName}
+        lastName={lastName}
+        setLastName={setLastName}
         email={email}
         setEmail={setEmail}
-        phoneNumber={phoneNumber}
-        setPhoneNumber={setPhoneNumber}
-        cpf={cpf}
-        setCpf={setCpf}
+        cpfCnpj={cpfCnpj}
+        setCpfCnpj={setCpfCnpj}
         password={password}
         setPassword={setPassword}
         onClickHandler={onClickHandler}

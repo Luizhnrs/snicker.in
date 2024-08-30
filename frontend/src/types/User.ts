@@ -4,5 +4,5 @@ export type User = {
   lastName: string;
   email: string;
   cpfCnpj: string;
-  password: string;
+  password?: string;
 };
