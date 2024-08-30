@@ -6,3 +6,10 @@ export const getAllProducts = async (): Promise<ProductType[]> => {
   const {data} = response;
   return data;
 };
+
+export const createProduct = async (product: ProductType) => {
+  await api.post(
+      '/products',
+      product,
+  );
+};

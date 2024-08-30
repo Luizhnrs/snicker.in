@@ -18,29 +18,38 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "product_name")
+    @Column(name = "product_name", nullable = false)
     private String productName;
-    @Column(name = "product_price")
+
+    @Column(name = "product_price", nullable = false)
     private BigDecimal productPrice;
-    @Column(name = "product_description")
+
+    @Column(name = "product_description", nullable = false)
     private String productDescription;
-    @Column(name = "product_status")
-    private Boolean productStatus;
-    @Column(name = "product_images")
+
+    @Column(name = "product_images", nullable = false)
     private String productImages;
-    @Column(name = "product_category")
+
+    @Column(name = "product_category", nullable = false)
     private String productCategory;
-    @Column(name = "product_brand")
+
+    @Column(name = "product_brand", nullable = false)
     private String productBrand;
-    @Column(name = "product_on_sale")
+
+    @Column(name = "product_on_sale", nullable = false)
     private boolean productOnSale;
+
     @Column(name = "product_sale_price")
     private BigDecimal productSalePrice;
 
-    public Products(String productName, BigDecimal productPrice, String productDescription, Boolean productStatus, String productImages, String productCategory, String productBrand, Boolean productOnSale, BigDecimal productSalePrice) {
-    }
-
-    public Object setProductOnSale() {
-        return false;
+    public Products(String productName, BigDecimal productPrice, String productDescription, String productImages, String productCategory, String productBrand, Boolean productOnSale, BigDecimal productSalePrice) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productDescription = productDescription;
+        this.productImages = productImages;
+        this.productCategory = productCategory;
+        this.productBrand = productBrand;
+        this.productOnSale = productOnSale;
+        this.productSalePrice = productSalePrice;
     }
 }

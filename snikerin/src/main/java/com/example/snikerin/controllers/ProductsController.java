@@ -29,9 +29,9 @@ public class ProductsController {
                 products.getProductName(),
                 products.getProductPrice(),
                 products.getProductDescription(),
-                products.getProductBrand(),
-                products.getProductCategory(),
                 products.getProductImages(),
+                products.getProductCategory(),
+                products.getProductBrand(),
                 products.isProductOnSale(),
                 products.getProductSalePrice()
 
@@ -48,10 +48,10 @@ public class ProductsController {
                         product.getProductName(),
                         product.getProductPrice(),
                         product.getProductDescription(),
-                        product.getProductCategory(),
                         product.getProductImages(),
+                        product.getProductCategory(),
                         product.getProductBrand(),
-                        product.getProductStatus(),
+                        product.isProductOnSale(),
                         product.getProductSalePrice()
                 )).toList();
         return ResponseEntity.status(HttpStatus.OK).body(productResponses);
@@ -66,10 +66,10 @@ public class ProductsController {
                     product.getProductName(),
                     product.getProductPrice(),
                     product.getProductDescription(),
-                    product.getProductCategory(),
                     product.getProductImages(),
+                    product.getProductCategory(),
                     product.getProductBrand(),
-                    product.getProductStatus(),
+                    product.isProductOnSale(),
                     product.getProductSalePrice()
             );
             return ResponseEntity.status(HttpStatus.OK).body(productResponse);
@@ -89,10 +89,10 @@ public class ProductsController {
                 product.getProductName(),
                 product.getProductPrice(),
                 product.getProductDescription(),
-                product.getProductCategory(),
                 product.getProductImages(),
+                product.getProductCategory(),
                 product.getProductBrand(),
-                product.getProductStatus(),
+                product.isProductOnSale(),
                 product.getProductSalePrice()
         );
         return ResponseEntity.ok(productResponse);
