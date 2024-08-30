@@ -1,4 +1,4 @@
 package com.example.snikerin.controllers.Requests;
 
-public record LoginRequest() {
+public record LoginRequest(String email, String password) {
 }

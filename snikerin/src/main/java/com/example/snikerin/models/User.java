@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,28 +16,68 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_users")
-public class User {
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "cpfCnpj", unique = true)
+
+    @Column(name = "cpfCnpj", unique = true, nullable = false)
     private String cpfCnpj;
-    @Column(name = "email", unique = true)
+
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
-    @Column(name = "password")
+
+    @Column(name = "password", nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "user")
     private List<Orders> orders;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    public User(String firstName, String lastName, String email, String password, String cpfCnpj) {
+    public User(String firstName, String lastName, String cpfCnpj, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cpfCnpj = cpfCnpj;
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
