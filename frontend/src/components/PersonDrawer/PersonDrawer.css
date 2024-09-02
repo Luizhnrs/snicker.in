@@ -1,0 +1,67 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  height: 100%;
+  width: 300px;
+  background-color: white;
+  color: black;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.drawer.open {
+  right: 0;
+}
+
+.drawer-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+}
+
+.drawer-content {
+  padding: 20px;
+}
+
+.drawer-content hr {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.158);
+  margin: 10px 0;
+}
+
+.drawer-content p {
+  margin: 20px 0;
+  color: black;
+  font-size: 18px;
+}
+
+.drawer-content p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.829);
+  z-index: 999;
+}
+
+.person-icon {
+  background-color: white;
+  margin: 0 10px;
+}
+
+.person-icon:hover {
+  cursor: pointer;
+}
