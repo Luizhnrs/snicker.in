@@ -1,0 +1,12 @@
+.matriz-page {
+  display: flex;
+  justify-content: center;
+}
+
+.matriz-container {
+  width: 80vw;
+  background-color: white;
+  padding-top: 8vh;
+  display: flex;
+  justify-content: center;
+}

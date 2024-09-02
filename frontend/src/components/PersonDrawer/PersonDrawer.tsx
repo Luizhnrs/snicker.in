@@ -19,8 +19,8 @@ export default function PersonDrawer({isOpen, onClose}: PersonDrawerProps) {
           <hr />
           <Link to="/profile"><p>Perfil</p></Link>
           <Link to="/about"><p>Sobre nós</p></Link>
-          <Link to="/login"><p>Entrar</p></Link>
-          <Link to="/register"><p>Criar Conta</p></Link>
+          <Link to="/auth/login"><p>Entrar</p></Link>
+          <Link to="/auth/register"><p>Criar Conta</p></Link>
           <p>Sair</p>
         </div>
       </div>
