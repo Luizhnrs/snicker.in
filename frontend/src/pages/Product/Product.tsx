@@ -1,48 +1,65 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../../components/Header';
 import ImageSlider from '../../components/ImageSlider/ImageSlider';
 import ProductOptionsForm from '../../components/ProductOptionsForm';
 import './product.css';
-
-const product = {
-  id: '8213281382jsandjas',
-  name: 'Dunk low',
-  imgs: ['https://www.copclub.com.br/cdn/shop/products/Wethenew-Sneakers-France-Nike-Dunk-Low-University-Blue-DD1391-102-1.0_800x_81d4aafa-9f95-4f99-8532-1ea4dcb214b0_grande.png?v=1622127347', 'https://www.copclub.com.br/cdn/shop/files/jordan-w-air-jordan-1-low-panda_20032224_45173127_2048_1200x.png?v=1685563664'],
-  price: 1044.99,
-  brand: 'Nike',
-  onSale: false,
-  salePrice: 800,
-  color: 'blue',
-  sizes: ['39', '40', '41', '42'],
-};
+import {ProductType} from '../../types/ProductType';
+import {useParams} from 'react-router-dom';
+import {getProductById} from '../../services/productService';
 
 
 export default function Product() {
+  const [product, setProduct] = useState<ProductType>({
+    id: '',
+    productName: '',
+    productDescription: '',
+    productImages: '',
+    productPrice: 0,
+    productBrand: '',
+    productOnSale: false,
+    productSalePrice: 0,
+    productCategory: '',
+  });
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const {productId} = useParams();
+
+  const getProduct = async () => {
+    try {
+      const response = await getProductById(String(productId));
+      setProduct(response);
+    } catch (error) {
+      setErrorMessage('Produto não encontrado');
+    }
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  if (errorMessage) return (<>{errorMessage}</>);
+
   return (
     <main className="product-page">
       <Header />
       <div className="product-container">
-        <ImageSlider images={product.imgs} />
+        <ImageSlider images={[product.productImages]} />
         <div className="details">
-          <h4>{product.name}</h4>
-          <p>{product.brand}</p>
+          <h4>{product.productName}</h4>
+          <p>{product.productBrand}</p>
           {
-            product.onSale ?
-              <p>R$ {product.salePrice.toFixed(2)}
+            product.productOnSale ?
+              <p>R$ {product.productSalePrice.toFixed(2)}
                 <span
-                  className="no-sale-price">R$ {product.price.toFixed(2)}</span>
+                  className="no-sale-price">
+                    R$ {product.productPrice.toFixed(2)}</span>
               </p> :
-              <p>R$ {product.price.toFixed(2)}</p>
+              <p>R$ {product.productPrice.toFixed(2)}</p>
           }
           <ProductOptionsForm product={product} />
           <div className="description">
             <article>
-              Reconhecendo as raízes do Dunk como o tênis de time universitário
-              de melhor classificação, o pacote “Be True To Your School”
-              parece a campanha publicitária original em busca de inspiração.
-               As cores representam universidades de primeira linha, enquanto
-               o couro nítido tem a quantidade perfeita de brilho para torná-los
-                uma vitória absoluta.
+              {product.productDescription}
             </article>
           </div>
         </div>

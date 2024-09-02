@@ -13,3 +13,9 @@ export const createProduct = async (product: ProductType) => {
       product,
   );
 };
+
+export const getProductById = async (id: string): Promise<ProductType> => {
+  const response = await api.get(`/products/${id}`);
+  const {data} = response;
+  return data;
+};

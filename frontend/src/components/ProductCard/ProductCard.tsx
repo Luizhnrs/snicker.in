@@ -9,7 +9,7 @@ type ProductCardProps = {
 
 export default function ProductCard({product}: ProductCardProps) {
   const {
-    productId,
+    id,
     productBrand,
     productName,
     productImages,
@@ -18,7 +18,7 @@ export default function ProductCard({product}: ProductCardProps) {
     productSalePrice} = product;
   return (
     <li className="product-card">
-      <Link to={`/product/${productId}`}>
+      <Link to={`/product/${id}`}>
         <img src={productImages} alt={`${productBrand} ${productName} image`} />
         <p>{productBrand} - {productName}</p>
         { productOnSale ?
