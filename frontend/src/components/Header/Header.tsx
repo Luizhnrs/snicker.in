@@ -4,22 +4,31 @@ import './header.css';
 import SearchForm from '../SearchForm';
 import HeaderCategories from '../HeaderCategories';
 import HeaderCart from '../HeaderCart';
-import BurguerMenu from '../BurgerMenu';
 import logo from '../../assets/logo.jpeg';
 import personIcon from '../../assets/person.svg';
 import PersonDrawer from '../PersonDrawer';
+import burgerIcon from '../../assets/burgerMenu.svg';
+import MobileDrawer from '../MobileDrawer';
 
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const toggleMobileDrawer = () => {
+    setMobileDrawerOpen(!mobileDrawerOpen);
+  };
+
   return (
     <header className="header">
-      <BurguerMenu />
+      <button className="burger-icon" onClick={toggleMobileDrawer}>
+        <img src={burgerIcon} alt="Burger icon" />
+      </button>
+      <MobileDrawer isOpen={mobileDrawerOpen} onClose={toggleMobileDrawer} />
       <div className="header-logo">
         <Link to="/">
           <img src={logo} alt="" />
