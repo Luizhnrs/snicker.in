@@ -28,8 +28,7 @@ private final UserService userService;
             user.getFirstName(),
             user.getLastName(),
             user.getCpfCnpj(),
-            user.getEmail(),
-            user.getPassword()
+            user.getEmail()
     );
     return ResponseEntity.status(HttpStatus.CREATED).body(userResponse);
 }
@@ -43,8 +42,7 @@ private final UserService userService;
                     user.getFirstName(),
                     user.getLastName(),
                     user.getCpfCnpj(),
-                    user.getEmail(),
-                    user.getPassword()
+                    user.getEmail()
             )).toList();
             return ResponseEntity.status(HttpStatus.OK).body(userResponseList);
 }
@@ -58,8 +56,7 @@ private final UserService userService;
                     user.getFirstName(),
                     user.getLastName(),
                     user.getCpfCnpj(),
-                    user.getEmail(),
-                    user.getPassword()
+                    user.getEmail()
             );
             return ResponseEntity.ok(userResponse);
         } catch (UserNotFoundException e) {
@@ -75,8 +72,7 @@ private final UserService userService;
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
-                user.getPassword(),
-                user.getCpfCnpj()
+                user.getPassword()
         );
         return ResponseEntity.ok(userResponse);
     } catch (UserNotFoundException e) {

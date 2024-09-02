@@ -7,9 +7,18 @@ export const getAllProducts = async (): Promise<ProductType[]> => {
   return data;
 };
 
-export const createProduct = async (product: ProductType) => {
-  await api.post(
+export const createProduct =
+async (product: ProductType): Promise<ProductType> => {
+  const response = await api.post(
       '/products',
       product,
   );
+  const {data} = response;
+  return data;
+};
+
+export const getProductById = async (id: string): Promise<ProductType> => {
+  const response = await api.get(`/products/${id}`);
+  const {data} = response;
+  return data;
 };

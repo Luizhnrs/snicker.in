@@ -1,6 +1,7 @@
 package com.example.snikerin.controllers;
 
 import com.example.snikerin.controllers.Requests.ProductRequest;
+import com.example.snikerin.controllers.Responses.ProductImageResponse;
 import com.example.snikerin.controllers.Responses.ProductResponse;
 import com.example.snikerin.controllers.Responses.UserResponse;
 import com.example.snikerin.exceptions.ProductNotFoundException;
@@ -29,7 +30,12 @@ public class ProductsController {
                 products.getProductName(),
                 products.getProductPrice(),
                 products.getProductDescription(),
-                products.getProductImages(),
+                products.getProductImages().stream().map(productImage ->
+                        new ProductImageResponse(
+                                productImage.getId(),
+                                productImage.getImageUrl(),
+                                productImage.getProduct().getId()
+                        )).toList(),
                 products.getProductCategory(),
                 products.getProductBrand(),
                 products.isProductOnSale(),
@@ -48,7 +54,12 @@ public class ProductsController {
                         product.getProductName(),
                         product.getProductPrice(),
                         product.getProductDescription(),
-                        product.getProductImages(),
+                        product.getProductImages().stream().map(productImage ->
+                                new ProductImageResponse(
+                                        productImage.getId(),
+                                        productImage.getImageUrl(),
+                                        productImage.getProduct().getId()
+                                )).toList(),
                         product.getProductCategory(),
                         product.getProductBrand(),
                         product.isProductOnSale(),
@@ -66,7 +77,12 @@ public class ProductsController {
                     product.getProductName(),
                     product.getProductPrice(),
                     product.getProductDescription(),
-                    product.getProductImages(),
+                    product.getProductImages().stream().map(productImage ->
+                            new ProductImageResponse(
+                                    productImage.getId(),
+                                    productImage.getImageUrl(),
+                                    productImage.getProduct().getId()
+                            )).toList(),
                     product.getProductCategory(),
                     product.getProductBrand(),
                     product.isProductOnSale(),
@@ -89,7 +105,12 @@ public class ProductsController {
                 product.getProductName(),
                 product.getProductPrice(),
                 product.getProductDescription(),
-                product.getProductImages(),
+                product.getProductImages().stream().map(productImage ->
+                        new ProductImageResponse(
+                                productImage.getId(),
+                                productImage.getImageUrl(),
+                                productImage.getProduct().getId()
+                        )).toList(),
                 product.getProductCategory(),
                 product.getProductBrand(),
                 product.isProductOnSale(),

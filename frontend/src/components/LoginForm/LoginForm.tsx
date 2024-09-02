@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import {Link} from 'react-router-dom';
 import './loginForm.css';
 
@@ -7,6 +7,7 @@ type LoginFormProps = {
   setEmail: (value: string) => void;
   password: string;
   setPassword: (value: string) => void;
+  onClickHandler: (event: MouseEvent<HTMLElement>) => void;
 };
 
 export default function LoginForm({
@@ -14,6 +15,7 @@ export default function LoginForm({
   setEmail,
   password,
   setPassword,
+  onClickHandler,
 }: LoginFormProps) {
   return (
     <form className="login-form">
@@ -48,7 +50,11 @@ export default function LoginForm({
           <p>Esqueceu sua senha?</p>
         </Link>
       </div>
-      <button type="submit" className="login-button">
+      <button
+        type="submit"
+        className="login-button"
+        onClick={onClickHandler}
+      >
         Entrar
       </button>
     </form>

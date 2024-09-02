@@ -1,27 +1,30 @@
 import React, {MouseEvent, useState} from 'react';
 import {useCart} from '../../contexts/CartContext';
+import {ProductType} from '../../types/ProductType';
 
 
 type ProductOptionsFormProps = {
-  product: any,
+  product: ProductType,
 }
 
 export default function ProductOptionsForm(
     {product}: ProductOptionsFormProps) {
   const [selectedSize, setSelectedSize] = useState('');
+
   const {saveCartProduct} = useCart();
+
   const onClickHandler = (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
     if (selectedSize) {
       saveCartProduct({
-        id: product.id,
-        name: product.name,
-        img: product.imgs[0],
-        price: product.price,
-        brand: product.brand,
-        onSale: product.onSale,
-        salePrice: product.salePrice,
-        color: product.color,
+        id: product.id ? product.id : '',
+        name: product.productName,
+        img: product.productImages ? product.productImages[0].imageUrl: '',
+        price: product.productPrice,
+        brand: product.productBrand,
+        onSale: product.productOnSale,
+        salePrice: product.productSalePrice,
+        color: 'black',
         size: selectedSize,
         quantity: 1,
       });
@@ -33,7 +36,7 @@ export default function ProductOptionsForm(
         <p>Selecione um tamanho</p>
         <ul className="sizes">
           {
-            product.sizes.map((size: string) => (
+            ['38', '39'].map((size: string) => (
               <li key={size}>
                 <label htmlFor={size}>{size}</label>
                 <input

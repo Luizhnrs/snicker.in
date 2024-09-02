@@ -2,6 +2,7 @@ import React, {ChangeEvent, FormEvent, useState} from 'react';
 import Header from '../../components/Header';
 import './createProduct.css';
 import {createProduct} from '../../services/productService';
+import {createProductImages} from '../../services/productImage';
 
 export default function CreateProduct() {
   const [formData, setFormData] = useState({
@@ -9,9 +10,9 @@ export default function CreateProduct() {
     productBrand: '',
     productCategory: '',
     productPrice: '',
-    productImage: '',
     productDescription: '',
   });
+  const [files, setFiles] = useState<FileList | null>(null);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target;
@@ -21,19 +22,55 @@ export default function CreateProduct() {
     });
   };
 
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = event.target.files;
+    setFiles(selectedFiles || null);
+  };
+
+  const getBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const saveImages = async (files: FileList, productId: string) => {
+    try {
+      const base64Images = await Promise.all(
+          Array.from(files).map(async (file) => {
+            const base64String = await getBase64(file);
+            return {
+              filename: file.name,
+              base64String: base64String.split(',')[1],
+            };
+          }),
+      );
+
+      await createProductImages(productId, base64Images);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await createProduct({
+      const createdProduct = await createProduct({
         productName: formData.productName,
         productBrand: formData.productBrand,
         productDescription: formData.productDescription,
         productCategory: formData.productCategory,
-        productImages: formData.productImage,
         productPrice: Number(formData.productPrice),
         productOnSale: false,
         productSalePrice: 0,
       });
+
+      if (files) {
+        await saveImages(files, String(createdProduct.id));
+      }
     } catch (error) {
       console.log(error);
     }
@@ -85,13 +122,13 @@ export default function CreateProduct() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="productImage">Imagem</label>
+            <label htmlFor="productImage">Imagens</label>
             <input
-              type="text"
+              type="file"
               name="productImage"
               id="productImage"
-              value={formData.productImage}
-              onChange={handleChange}
+              multiple
+              onChange={handleFileChange}
             />
           </div>
           <div className="form-group">
@@ -104,12 +141,9 @@ export default function CreateProduct() {
               onChange={handleChange}
             />
           </div>
-          <button
-            type="submit" className="create-product-button">Salvar</button>
+          <button type="submit"
+            className="create-product-button">Salvar</button>
         </form>
-        {formData.productImage && (
-          <img src={formData.productImage} alt="Product Preview" />
-        )}
       </div>
     </main>
   );
