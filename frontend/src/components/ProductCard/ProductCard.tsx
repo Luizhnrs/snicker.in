@@ -19,7 +19,11 @@ export default function ProductCard({product}: ProductCardProps) {
   return (
     <li className="product-card">
       <Link to={`/product/${id}`}>
-        <img src={productImages} alt={`${productBrand} ${productName} image`} />
+        {
+          productImages && <img src={productImages.length > 0 ?
+            `http://localhost:8080${productImages[0].imageUrl}` : ''}
+          alt={`${productBrand} ${productName} image`} />
+        }
         <p>{productBrand} - {productName}</p>
         { productOnSale ?
         <p>R$ {productSalePrice.toFixed(2)}

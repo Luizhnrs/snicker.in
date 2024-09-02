@@ -1,8 +1,10 @@
+import {ProductImage} from './ProductImage';
+
 export type ProductType = {
   id?: string,
   productName: string,
   productDescription: string,
-  productImages: string,
+  productImages?: ProductImage[],
   productPrice: number,
   productBrand: string,
   productOnSale: boolean,

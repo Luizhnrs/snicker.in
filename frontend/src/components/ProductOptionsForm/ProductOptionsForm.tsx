@@ -19,7 +19,7 @@ export default function ProductOptionsForm(
       saveCartProduct({
         id: product.id ? product.id : '',
         name: product.productName,
-        img: product.productImages,
+        img: product.productImages ? product.productImages[0].imageUrl: '',
         price: product.productPrice,
         brand: product.productBrand,
         onSale: product.productOnSale,

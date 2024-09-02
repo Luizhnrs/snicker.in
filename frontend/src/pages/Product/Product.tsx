@@ -13,7 +13,7 @@ export default function Product() {
     id: '',
     productName: '',
     productDescription: '',
-    productImages: '',
+    productImages: [],
     productPrice: 0,
     productBrand: '',
     productOnSale: false,
@@ -43,7 +43,8 @@ export default function Product() {
     <main className="product-page">
       <Header />
       <div className="product-container">
-        <ImageSlider images={[product.productImages]} />
+        <ImageSlider images={product.productImages ?
+          product.productImages : []} />
         <div className="details">
           <h4>{product.productName}</h4>
           <p>{product.productBrand}</p>
