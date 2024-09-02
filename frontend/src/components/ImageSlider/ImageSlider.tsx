@@ -19,15 +19,17 @@ export default function ImageSlider({images}: ImageSliderProps) {
   return (
     <div className="slider">
       <div className="slider-content">
-        <img src={images.length > 0 ? `http://localhost:8080${images[currentIndex].imageUrl}` : ''}
-          alt="slide" className="slide-image" />
+        <img src={images.length > 0 ?
+        `${process.env.REACT_APP_API_HOST}${images[currentIndex].imageUrl}` :
+        ''}
+        alt="slide" className="slide-image" />
       </div>
 
       <div className="thumbnails">
         {images.length > 0 && images.map((image, index) => (
           <img
             key={index}
-            src={`http://localhost:8080${image.imageUrl}`}
+            src={`${process.env.REACT_APP_API_HOST}${image.imageUrl}`}
             alt={`Thumbnail ${index + 1}`}
             className={`thumbnail ${currentIndex === index ? 'active' : ''}`}
             onMouseEnter={() => handleMouseEnter(index)}

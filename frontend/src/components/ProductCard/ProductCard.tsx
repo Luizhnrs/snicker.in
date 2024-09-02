@@ -21,7 +21,8 @@ export default function ProductCard({product}: ProductCardProps) {
       <Link to={`/product/${id}`}>
         {
           productImages && <img src={productImages.length > 0 ?
-            `http://localhost:8080${productImages[0].imageUrl}` : ''}
+            `${process.env.REACT_APP_API_HOST}${productImages[0].imageUrl}` :
+            ''}
           alt={`${productBrand} ${productName} image`} />
         }
         <p>{productBrand} - {productName}</p>

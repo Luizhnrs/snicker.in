@@ -28,7 +28,9 @@ export default function CartTable({products}: CartTableProps) {
               id, name, price, img, brand, color, size, quantity}) => (
               <tr key={`${id} ${name}`}>
                 <td className="product-info">
-                  <img src={img} alt={`${name} image`}
+                  <img
+                    src={`${process.env.REACT_APP_API_HOST}${img}`}
+                    alt={`${name} image`}
                     className="product-image"/>
                   <div className="product-details">
                     <p>{brand} {name}</p>
