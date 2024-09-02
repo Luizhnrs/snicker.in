@@ -28,7 +28,7 @@ public class ProductImageService {
     @Autowired
     private ProductRepository productRepository;
 
-    private static final String UPLOAD_DIR = "uploads/";
+    private static final String UPLOAD_DIR = "src/main/resources/static/uploads/";
 
     public ProductImage uploadImage(String filename, String data, UUID productId) throws IOException, ProductNotFoundException {
         File directory = new File(UPLOAD_DIR);
