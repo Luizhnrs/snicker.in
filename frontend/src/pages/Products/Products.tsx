@@ -6,6 +6,7 @@ import './products.css';
 import {useProducts} from '../../contexts/ProductsContext';
 import {useParams} from 'react-router-dom';
 import {ProductType} from '../../types/ProductType';
+import NoProducts from '../../components/NoProducts';
 
 export default function Products() {
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
@@ -42,15 +43,22 @@ export default function Products() {
     <main className="products-page">
       <Header />
       <div className="products-container">
-        <Filters />
-        <ul>
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))}
-        </ul>
+        {
+          filteredProducts.length === 0 ? <NoProducts /> :
+          (
+            <>
+              <Filters />
+              <ul>
+                {filteredProducts.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                  />
+                ))}
+              </ul>
+            </>
+          )
+        }
       </div>
     </main>
   );
