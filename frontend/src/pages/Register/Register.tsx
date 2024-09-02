@@ -4,7 +4,6 @@ import './register.css';
 import {Link, useNavigate} from 'react-router-dom';
 import logo from '../../assets/logo.jpeg';
 import {registerUser} from '../../services/userService';
-import {useAuth} from '../../contexts/AuthContext';
 
 export default function Register() {
   const [firstName, setFirstName] = useState('');
@@ -14,27 +13,19 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const {setUser} = useAuth();
   const navigate = useNavigate();
 
   const onClickHandler = async (event: MouseEvent<HTMLElement>) => {
     event.preventDefault();
     try {
-      const newUser = await registerUser({
+      await registerUser({
         firstName,
         lastName,
         email,
         cpfCnpj,
         password,
       });
-      setUser({
-        id: newUser.id,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        email: newUser.email,
-        cpfCnpj: newUser.cpfCnpj,
-      });
-      navigate('/');
+      navigate('/login');
     } catch (error) {
       setErrorMessage('Ocorreu um erro!');
     }
