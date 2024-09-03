@@ -5,8 +5,30 @@
 
 .matriz-container {
   width: 80vw;
+  min-height: 100vh;
   background-color: white;
-  padding-top: 8vh;
+  padding-top: 10vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matriz-container ul {
+  display: flex;
+  margin: 30px;
+}
+
+.matriz-container h1, h3 {
+  margin: 10px;
+  text-align: start;
+}
+
+.matriz-links {
+  background-color: green;
+  border-radius: 10px;
+  padding: 50px;
+  font-size: 20px;
+  margin: 10px;
+  color: white;
+  font-weight: 800;
 }
