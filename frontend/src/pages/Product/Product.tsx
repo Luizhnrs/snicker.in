@@ -43,19 +43,21 @@ export default function Product() {
     <main className="product-page">
       <Header />
       <div className="product-container">
-        <ImageSlider images={product.productImages ?
-          product.productImages : []} />
+        <div className="product-slider">
+          <ImageSlider images={product.productImages ?
+            product.productImages : []} />
+        </div>
         <div className="details">
           <h4>{product.productName}</h4>
           <p>{product.productBrand}</p>
           {
             product.productOnSale ?
-              <p>R$ {product.productSalePrice.toFixed(2)}
+              <p className="price">R$ {product.productSalePrice.toFixed(2)}
                 <span
                   className="no-sale-price">
-                    R$ {product.productPrice.toFixed(2)}</span>
+                  R$ {product.productPrice.toFixed(2)}</span>
               </p> :
-              <p>R$ {product.productPrice.toFixed(2)}</p>
+              <p className="price">R$ {product.productPrice.toFixed(2)}</p>
           }
           <ProductOptionsForm product={product} />
           <div className="description">
