@@ -1,7 +1,7 @@
 package com.example.snikerin.exceptions;
 
-public class ProductNotFoundException extends Exception{
+public class ProductNotFoundException extends RuntimeException{
     public ProductNotFoundException(){
-        super("Product not found or out of stock");
+        super("Produto não encontrado!");
     }
 }
