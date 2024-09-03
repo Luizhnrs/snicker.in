@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/products")
@@ -21,105 +22,66 @@ public class ProductsController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductResponse> registerProduct(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<ProductResponse> registerProduct(@RequestBody ProductRequest productRequest) {
         Product product = productService.createProduct(productRequest.toEntity());
-        ProductResponse productResponse = new ProductResponse(
-                product.getId(),
-                product.getProductName(),
-                product.getProductPrice(),
-                product.getProductDescription(),
-                product.getProductImages().stream().map(productImage ->
-                        new ProductImageResponse(
-                                productImage.getId(),
-                                productImage.getImageUrl(),
-                                productImage.getProduct().getId()
-                        )).toList(),
-                product.getProductCategory(),
-                product.getProductBrand(),
-                product.isProductOnSale(),
-                product.getProductSalePrice()
-
-        );
+        ProductResponse productResponse = convertToProductResponse(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(productResponse);
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts(){
+    public ResponseEntity<List<ProductResponse>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
         List<ProductResponse> productResponses = products.stream()
-                .map(product -> new ProductResponse(
-                        product.getId(),
-                        product.getProductName(),
-                        product.getProductPrice(),
-                        product.getProductDescription(),
-                        product.getProductImages().stream().map(productImage ->
-                                new ProductImageResponse(
-                                        productImage.getId(),
-                                        productImage.getImageUrl(),
-                                        productImage.getProduct().getId()
-                                )).toList(),
-                        product.getProductCategory(),
-                        product.getProductBrand(),
-                        product.isProductOnSale(),
-                        product.getProductSalePrice()
-                )).toList();
+                .map(this::convertToProductResponse)
+                .collect(Collectors.toList());
         return ResponseEntity.status(HttpStatus.OK).body(productResponses);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> getProductById(@PathVariable UUID id) throws ProductNotFoundException {
-        try{
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable UUID id) {
+        try {
             Product product = productService.getProductById(id);
-            ProductResponse productResponse = new ProductResponse(
-                    product.getId(),
-                    product.getProductName(),
-                    product.getProductPrice(),
-                    product.getProductDescription(),
-                    product.getProductImages().stream().map(productImage ->
-                            new ProductImageResponse(
-                                    productImage.getId(),
-                                    productImage.getImageUrl(),
-                                    productImage.getProduct().getId()
-                            )).toList(),
-                    product.getProductCategory(),
-                    product.getProductBrand(),
-                    product.isProductOnSale(),
-                    product.getProductSalePrice()
-            );
+            ProductResponse productResponse = convertToProductResponse(product);
             return ResponseEntity.status(HttpStatus.OK).body(productResponse);
-        }catch (ProductNotFoundException e){
+        } catch (ProductNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<ProductResponse> updateProduct(@PathVariable("id") UUID id, @RequestBody ProductRequest productRequest) throws ProductNotFoundException {
-        Product product = productService.updateProduct(id, productRequest.toEntity());
-        if(product == null){
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable UUID id, @RequestBody ProductRequest productRequest) {
+        try {
+            Product product = productService.updateProduct(id, productRequest.toEntity());
+            ProductResponse productResponse = convertToProductResponse(product);
+            return ResponseEntity.ok(productResponse);
+        } catch (ProductNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-        ProductResponse productResponse = new ProductResponse(
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable UUID id) {
+        try {
+            productService.deleteProduct(id);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        } catch (ProductNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    private ProductResponse convertToProductResponse(Product product) {
+        return new ProductResponse(
                 product.getId(),
-                product.getProductName(),
-                product.getProductPrice(),
-                product.getProductDescription(),
-                product.getProductImages().stream().map(productImage ->
-                        new ProductImageResponse(
-                                productImage.getId(),
-                                productImage.getImageUrl(),
-                                productImage.getProduct().getId()
-                        )).toList(),
-                product.getProductCategory(),
-                product.getProductBrand(),
-                product.isProductOnSale(),
-                product.getProductSalePrice()
+                product.getName(),
+                product.getPrice(),
+                product.getDescription(),
+                product.getImages().stream()
+                        .map(image -> new ProductImageResponse(image.getId(), image.getImageUrl(), product.getId()))
+                        .collect(Collectors.toList()),
+                product.getCategory(),
+                product.getBrand(),
+                product.isOnSale(),
+                product.getSalePrice()
         );
-        return ResponseEntity.ok(productResponse);
-    }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable("id") UUID id) throws ProductNotFoundException {
-        productService.deleteProduct(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
