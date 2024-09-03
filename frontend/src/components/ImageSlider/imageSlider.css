@@ -1,7 +1,6 @@
 .slider {
-  position: relative;
   width: 100%;
-  max-width: 50vw;
+  max-width: 30vw;
   margin: auto;
   overflow: hidden;
   border-radius: 10px;

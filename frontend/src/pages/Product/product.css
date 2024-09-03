@@ -5,11 +5,15 @@
 
 .product-container {
   width: 80vw;
-  min-height: 92vh;
+  min-height: 100vh;
   background-color: white;
   padding-top: 8vh;
   display: flex;
-  justify-content: center;
+  align-items: center;
+}
+
+.product-slider {
+  width: 50%;
 }
 
 .product-container .no-sale-price {
@@ -19,7 +23,7 @@
 
 .product-container .details {
   min-width: 20vw;
-  margin-top: 200px;
+  margin: 20px;
 }
 
 .product-container .details > div {
@@ -36,42 +40,23 @@
   margin-bottom: 10px;
 }
 
-.product-container .details .sizes {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -3px;
-  max-width: 18vw;
-}
-
-.product-container .details li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 3px;
-  margin: 3px;
-  width: 4.06vw;
-  height: 5vh;
-}
-
-.product-container .details li:hover {
-  cursor: pointer;
-}
-
-.add-cart-button {
-  margin-top: 20px;
-  padding: 20px 5px;
-  border-radius: 10px;
-  width: 18vw;
-  background-color: rgb(31, 30, 30);
-  font-weight: 100;
-}
-
-.add-cart-button:hover {
-  background-color: rgba(0, 0, 0, 0.829);
-}
-
 .description {
   max-width: 18vw;
   font-size: 16px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .product-container {
+    width: 95vw;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .product-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start  ;
+  } 
 }

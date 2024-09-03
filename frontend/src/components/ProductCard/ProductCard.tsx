@@ -27,10 +27,10 @@ export default function ProductCard({product}: ProductCardProps) {
         }
         <p>{productBrand} - {productName}</p>
         { productOnSale ?
-        <p>R$ {productSalePrice.toFixed(2)}
+        <p className="price">R$ {productSalePrice.toFixed(2)}
           <span className="no-sale-price">R$ {productPrice.toFixed(2)}</span>
         </p> :
-        <p>R$ {productPrice.toFixed(2)}</p> }
+        <p className="price">R$ {productPrice.toFixed(2)}</p> }
       </Link>
     </li>
   );

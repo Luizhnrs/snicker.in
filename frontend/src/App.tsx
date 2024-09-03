@@ -12,6 +12,7 @@ import ProfileData from './pages/ProfileData';
 import Favorites from './pages/Favorites';
 import Payment from './pages/Payment';
 import CreateProduct from './pages/CreateProduct';
+import Matriz from './pages/Matriz';
 
 export default function App() {
   return (
@@ -30,7 +31,8 @@ export default function App() {
           <Route path="/profile/profile-data" element={<ProfileData />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/create-product" element={<CreateProduct />} />
+          <Route path="/matriz" element={<Matriz />} />
+          <Route path="/matriz/create-product" element={<CreateProduct />} />
         </Routes>
       </BrowserRouter>
     </>

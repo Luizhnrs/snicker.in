@@ -30,14 +30,14 @@
 }
 
 .discount {
-  color: green; /* Ajuste a cor do desconto conforme necessário */
+  color: green;
 }
 
 .summary-button {
   width: 100%;
   margin-top: 20px;
   padding: 10px;
-  background-color: rgb(90, 81, 255); /* Usar o azul dos botões do login */
+  background-color: green;
   color: white;
   border: none;
   font-size: 16px;
@@ -46,10 +46,9 @@
 
 .summary-button:hover {
   cursor: pointer;
-  background-color: rgba(90, 81, 255, 0.911);
+  background-color: rgba(0, 128, 0, 0.945);
 }
 
-/* Responsividade */
 @media only screen and (max-width: 1200px) {
   .summary-header,
   .summary-data {
