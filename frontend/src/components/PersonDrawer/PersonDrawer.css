@@ -7,7 +7,7 @@
   background-color: white;
   color: black;
   transition: 0.3s ease;
-  z-index: 1000;
+  z-index: 99999;
 }
 
 .drawer.open {
@@ -54,7 +54,7 @@
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.829);
-  z-index: 999;
+  z-index: 9999;
 }
 
 .person-icon {

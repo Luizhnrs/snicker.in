@@ -40,43 +40,6 @@
   margin-bottom: 10px;
 }
 
-.product-container .details .sizes {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -3px;
-}
-
-.product-container .details li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 3px;
-  margin: 3px;
-  width: 100px;
-  height: 50px;
-}
-
-.product-container .details li:hover {
-  cursor: pointer;
-}
-
-.add-cart-button {
-  margin-top: 20px;
-  padding: 20px 5px;
-  border-radius: 10px;
-  width: 300px;
-  background-color: green;
-  color: white;
-  font-weight: 800;
-  font-size: 16px;
-}
-
-.add-cart-button:hover {
-  background-color: rgba(0, 128, 0, 0.945);
-  cursor: pointer;
-}
-
 .description {
   max-width: 18vw;
   font-size: 16px;

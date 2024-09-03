@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Filters from '../../components/Filters/Filters';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import './products.css';
@@ -73,7 +72,6 @@ export default function Products() {
                 <OrderByForm orderBy={orderBy} setOrderBy={setOrderBy} />
               </div>
               <div>
-                <Filters />
                 <ul>
                   {filteredProducts.map((product) => (
                     <ProductCard
