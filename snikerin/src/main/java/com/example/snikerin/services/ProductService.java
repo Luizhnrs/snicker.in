@@ -3,47 +3,57 @@ package com.example.snikerin.services;
 import com.example.snikerin.exceptions.ProductNotFoundException;
 import com.example.snikerin.models.Product;
 import com.example.snikerin.repositories.ProductRepository;
-import com.example.snikerin.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository, UserRepository userRepository) {
-        this.productRepository = productRepository;
-    }
-
+    @Transactional
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
+    @Transactional(readOnly = true)
     public Product getProductById(UUID id) throws ProductNotFoundException {
-        return productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        return productRepository.findById(id)
+                .orElseThrow(ProductNotFoundException::new);
     }
 
+    @Transactional(readOnly = true)
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Product updateProduct(UUID id, Product product) {
-        Product productSearched = productRepository.findById(id).get();
-        productSearched.setProductName(product.getProductName());
-        productSearched.setProductDescription(product.getProductDescription());
-        productSearched.setProductPrice(product.getProductPrice());
-        productSearched.setProductBrand(product.getProductBrand());
-        productSearched.setProductCategory(product.getProductCategory());
-        productSearched.setProductImages(product.getProductImages());
-        productSearched.setProductOnSale(product.isProductOnSale());
-        return productRepository.save(productSearched);
+    @Transactional
+    public Product updateProduct(UUID id, Product updatedProduct) throws ProductNotFoundException {
+        Product existingProduct = productRepository.findById(id)
+                .orElseThrow(ProductNotFoundException::new);
+
+        // Directly update all fields
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setDescription(updatedProduct.getDescription());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setCategory(updatedProduct.getCategory());
+        existingProduct.setBrand(updatedProduct.getBrand());
+        existingProduct.setOnSale(updatedProduct.isOnSale());
+        existingProduct.setSalePrice(updatedProduct.getSalePrice());
+        existingProduct.setImages(updatedProduct.getImages());
+
+        return productRepository.save(existingProduct);
     }
 
-    public void deleteProduct(UUID id) throws ProductNotFoundException{
-        Product productToDelete = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+    @Transactional
+    public void deleteProduct(UUID id) throws ProductNotFoundException {
+        Product productToDelete = productRepository.findById(id)
+                .orElseThrow(ProductNotFoundException::new);
+
         productRepository.delete(productToDelete);
     }
 }
-
