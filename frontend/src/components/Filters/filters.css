@@ -10,23 +10,6 @@
   margin: 20px 0;
 }
 
-.filters-form .order-by {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.filters-form .order-by button {
-  background-color: white;
-  color: black;
-  border: 1px solid rgb(150, 150, 150);
-  border-radius: 3px;
-  font-size: 12px;
-  font-weight: 10;
-  padding: 15px;
-  margin: 0 10px;
-}
-
 .filters-form .colors {
   display: flex;
   flex-direction: column;

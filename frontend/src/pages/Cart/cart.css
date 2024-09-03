@@ -4,18 +4,16 @@
 }
 
 .cart-container {
-  width: 55vw;
-  min-height: 92vh;
+  width: 70vw;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background-color: white;
   padding-top: 8vh;
 }
 
 .cart-checkout {
-  display: flex;
-  justify-content: space-between;
+  width: 40%;
 }
 
 .discount {
@@ -67,6 +65,14 @@
 @media only screen and (max-width: 1200px) {
   .cart-container {
     width: 95vw;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cart-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
   }
 }
 
@@ -74,4 +80,10 @@
   .cart-container {
     width: 100vw;
   } 
+  .cart-checkout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 }

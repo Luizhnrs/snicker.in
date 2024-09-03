@@ -21,7 +21,7 @@
   margin: 20px;
 }
 
-.products-container > ul {
+.products-container ul {
   display: flex;
   flex-wrap: wrap;
   width: 80%;
@@ -29,6 +29,12 @@
 
 .products-container > div {
   display: flex;
+}
+
+.products-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1200px) {

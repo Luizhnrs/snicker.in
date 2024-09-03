@@ -1,39 +1,24 @@
 import React from 'react';
+import CustomDropdown from '../CustomDropdown';
 
 type OrderByFormProps = {
   orderBy: string,
   setOrderBy: (orderBy: string) => void;
 }
 
+const options = [
+  {value: 'relevance', label: 'Relevância'},
+  {value: 'highestPrice', label: 'Maior Preço'},
+  {value: 'lowestPrice', label: 'Menor Preço'},
+];
+
 export default function OrderByForm({orderBy, setOrderBy}: OrderByFormProps) {
   return (
-    <div className="order-by">
-      <div>
-        <hr />
-        <p>Ordenar por</p>
-        <hr />
-      </div>
-      <div>
-        <label
-          htmlFor="highestPrice"
-        >Menor preço</label>
-        <input
-          type="radio"
-          name="orderBy"
-          value="highestPrice"
-          checked={orderBy === 'highestPrice'}
-          onChange={({target}) => setOrderBy(target.value)}
-          id="highestPrice" />
-        <label
-          htmlFor="lowestPrice">Maior preço</label>
-        <input
-          type="radio"
-          name="orderBy"
-          value="lowestPrice"
-          checked={orderBy === 'lowestPrice'}
-          onChange={({target}) => setOrderBy(target.value)}
-          id="lowestPrice" />
-      </div>
+    <div>
+      <CustomDropdown
+        options={options}
+        selectedValue={orderBy}
+        onSelect={setOrderBy} />
     </div>
   );
 }
