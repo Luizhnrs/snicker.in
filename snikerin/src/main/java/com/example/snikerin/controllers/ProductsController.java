@@ -1,18 +1,16 @@
 package com.example.snikerin.controllers;
 
-import com.example.snikerin.controllers.Requests.ProductRequest;
-import com.example.snikerin.controllers.Responses.ProductImageResponse;
-import com.example.snikerin.controllers.Responses.ProductResponse;
-import com.example.snikerin.controllers.Responses.UserResponse;
+import com.example.snikerin.controllers.requests.ProductRequest;
+import com.example.snikerin.controllers.responses.ProductImageResponse;
+import com.example.snikerin.controllers.responses.ProductResponse;
 import com.example.snikerin.exceptions.ProductNotFoundException;
-import com.example.snikerin.models.Products;
+import com.example.snikerin.models.Product;
 import com.example.snikerin.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,22 +22,22 @@ public class ProductsController {
 
     @PostMapping
     public ResponseEntity<ProductResponse> registerProduct(@RequestBody ProductRequest productRequest){
-        Products products = productService.createProduct(productRequest.toEntity());
+        Product product = productService.createProduct(productRequest.toEntity());
         ProductResponse productResponse = new ProductResponse(
-                products.getId(),
-                products.getProductName(),
-                products.getProductPrice(),
-                products.getProductDescription(),
-                products.getProductImages().stream().map(productImage ->
+                product.getId(),
+                product.getProductName(),
+                product.getProductPrice(),
+                product.getProductDescription(),
+                product.getProductImages().stream().map(productImage ->
                         new ProductImageResponse(
                                 productImage.getId(),
                                 productImage.getImageUrl(),
                                 productImage.getProduct().getId()
                         )).toList(),
-                products.getProductCategory(),
-                products.getProductBrand(),
-                products.isProductOnSale(),
-                products.getProductSalePrice()
+                product.getProductCategory(),
+                product.getProductBrand(),
+                product.isProductOnSale(),
+                product.getProductSalePrice()
 
         );
         return ResponseEntity.status(HttpStatus.CREATED).body(productResponse);
@@ -47,7 +45,7 @@ public class ProductsController {
 
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts(){
-        List<Products> products = productService.getAllProducts();
+        List<Product> products = productService.getAllProducts();
         List<ProductResponse> productResponses = products.stream()
                 .map(product -> new ProductResponse(
                         product.getId(),
@@ -71,7 +69,7 @@ public class ProductsController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable UUID id) throws ProductNotFoundException {
         try{
-            Products product = productService.getProductById(id);
+            Product product = productService.getProductById(id);
             ProductResponse productResponse = new ProductResponse(
                     product.getId(),
                     product.getProductName(),
@@ -96,7 +94,7 @@ public class ProductsController {
 
     @PutMapping("{id}")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable("id") UUID id, @RequestBody ProductRequest productRequest) throws ProductNotFoundException {
-        Products product = productService.updateProduct(id, productRequest.toEntity());
+        Product product = productService.updateProduct(id, productRequest.toEntity());
         if(product == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

@@ -1,7 +1,7 @@
 package com.example.snikerin.controllers;
 
-import com.example.snikerin.controllers.Requests.UserRequest;
-import com.example.snikerin.controllers.Responses.UserResponse;
+import com.example.snikerin.controllers.requests.UserRequest;
+import com.example.snikerin.controllers.responses.UserResponse;
 import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.User;
 import com.example.snikerin.services.UserService;
@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 

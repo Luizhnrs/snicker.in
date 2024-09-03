@@ -29,7 +29,7 @@ public class Cart {
     private Date createdAt;
     private Date updatedAt;
     @OneToMany
-    private List<Products> products;
+    private List<Product> products;
 
 
     public Cart(String items, BigDecimal price, String buyer) {

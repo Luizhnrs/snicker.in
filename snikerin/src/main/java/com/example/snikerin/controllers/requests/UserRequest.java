@@ -1,4 +1,4 @@
-package com.example.snikerin.controllers.Requests;
+package com.example.snikerin.controllers.requests;
 
 import com.example.snikerin.models.User;
 

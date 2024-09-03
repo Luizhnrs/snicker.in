@@ -1,7 +1,7 @@
 package com.example.snikerin.services;
 
 import com.example.snikerin.exceptions.ProductNotFoundException;
-import com.example.snikerin.models.Products;
+import com.example.snikerin.models.Product;
 import com.example.snikerin.repositories.ProductRepository;
 import com.example.snikerin.repositories.UserRepository;
 import org.springframework.stereotype.Service;
@@ -17,20 +17,20 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public Products createProduct(Products product) {
+    public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
-    public Products getProductById(UUID id) throws ProductNotFoundException {
+    public Product getProductById(UUID id) throws ProductNotFoundException {
         return productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
     }
 
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Products updateProduct(UUID id, Products product) {
-        Products productSearched = productRepository.findById(id).get();
+    public Product updateProduct(UUID id, Product product) {
+        Product productSearched = productRepository.findById(id).get();
         productSearched.setProductName(product.getProductName());
         productSearched.setProductDescription(product.getProductDescription());
         productSearched.setProductPrice(product.getProductPrice());
@@ -42,7 +42,7 @@ public class ProductService {
     }
 
     public void deleteProduct(UUID id) throws ProductNotFoundException{
-        Products productToDelete = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+        Product productToDelete = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         productRepository.delete(productToDelete);
     }
 }

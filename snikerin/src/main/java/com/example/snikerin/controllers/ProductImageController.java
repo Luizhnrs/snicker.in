@@ -1,8 +1,7 @@
 package com.example.snikerin.controllers;
 
-import com.example.snikerin.controllers.Requests.ProductImageRequest;
-import com.example.snikerin.controllers.Requests.ProductImagesRequest;
-import com.example.snikerin.controllers.Responses.ProductImageResponse;
+import com.example.snikerin.controllers.requests.ProductImagesRequest;
+import com.example.snikerin.controllers.responses.ProductImageResponse;
 import com.example.snikerin.exceptions.ProductNotFoundException;
 import com.example.snikerin.models.ProductImage;
 import com.example.snikerin.services.ProductImageService;

@@ -1,10 +1,9 @@
 package com.example.snikerin.controllers;
 
-import com.example.snikerin.controllers.Requests.LoginRequest;
-import com.example.snikerin.controllers.Responses.LoginResponse;
+import com.example.snikerin.controllers.requests.LoginRequest;
+import com.example.snikerin.controllers.responses.LoginResponse;
 import com.example.snikerin.services.TokenService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
