@@ -30,3 +30,15 @@
 .products-container > div {
   display: flex;
 }
+
+@media only screen and (max-width: 1200px) {
+  .products-container {
+    width: 95vw;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .products-container {
+    width: 100vw;
+  } 
+}
