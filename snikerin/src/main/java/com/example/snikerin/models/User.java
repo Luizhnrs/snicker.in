@@ -17,6 +17,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "tb_users")
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -27,8 +28,8 @@ public class User implements UserDetails {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "cpfCnpj", unique = true, nullable = false)
-    private String cpfCnpj;
+    @Column(name = "cpf", unique = true, nullable = false)
+    private String cpf;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
@@ -36,17 +37,17 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Orders> orders;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    public User(String firstName, String lastName, String cpfCnpj, String email, String password) {
+    public User(String firstName, String lastName, String cpf, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.cpfCnpj = cpfCnpj;
+        this.cpf = cpf;
         this.email = email;
         this.password = password;
     }
