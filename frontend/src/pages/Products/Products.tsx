@@ -47,15 +47,19 @@ export default function Products() {
           filteredProducts.length === 0 ? <NoProducts /> :
           (
             <>
-              <Filters />
-              <ul>
-                {filteredProducts.map((product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                  />
-                ))}
-              </ul>
+              <h2>{type}</h2>
+              <p>{filteredProducts.length} itens encontrados</p>
+              <div>
+                <Filters />
+                <ul>
+                  {filteredProducts.map((product) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                    />
+                  ))}
+                </ul>
+              </div>
             </>
           )
         }
