@@ -3,7 +3,6 @@ package com.example.snikerin.controllers;
 import com.example.snikerin.controllers.requests.ProductRequest;
 import com.example.snikerin.controllers.responses.ProductImageResponse;
 import com.example.snikerin.controllers.responses.ProductResponse;
-import com.example.snikerin.exceptions.ProductNotFoundException;
 import com.example.snikerin.models.Product;
 import com.example.snikerin.services.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/products")
 @RequiredArgsConstructor
-public class ProductsController {
+public class ProductController {
     private final ProductService productService;
 
     @PostMapping

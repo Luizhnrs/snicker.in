@@ -22,7 +22,7 @@ public class CartItemService {
     private final CartRepository cartRepository;
     private final ProductRepository productRepository;
 
-    public Cart createCartItem(UUID cartId, UUID productId, CartItem cartItem) {
+    public CartItem createCartItem(UUID cartId, UUID productId, CartItem cartItem) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(ProductNotFoundException::new);
         Cart cart = cartRepository.findById(cartId)
@@ -32,8 +32,8 @@ public class CartItemService {
         cartItem.setCart(cart);
         cart.getItems().add(cartItem);
 
-        cartItemRepository.save(cartItem);
-        return cartRepository.save(cart);
+        cartRepository.save(cart);
+        return cartItemRepository.save(cartItem);
     }
 
     public void removeItemFromCart(UUID cartId, UUID cartItemId) {
