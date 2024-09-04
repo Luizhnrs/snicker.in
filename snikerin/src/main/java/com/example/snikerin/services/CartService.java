@@ -1,40 +1,42 @@
 package com.example.snikerin.services;
 
-import com.example.snikerin.exceptions.CartCannotBeCreatedException;
+import com.example.snikerin.exceptions.CartNotFoundException;
+import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.Cart;
+import com.example.snikerin.models.User;
 import com.example.snikerin.repositories.CartRepository;
+import com.example.snikerin.repositories.CartItemRepository;
+import com.example.snikerin.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class CartService {
-    private CartRepository cartRepository;
-    public CartService(CartRepository cartRepository) {
-        this.cartRepository = cartRepository;
-    }
 
-    public Cart createCart(Cart cart) {
+    private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
+    private final UserRepository userRepository;
+
+    public Cart createCart(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(UserNotFoundException::new);
+
+        Cart cart = new Cart(null, user, null);
         return cartRepository.save(cart);
     }
 
-    public Cart getCartById(UUID id) throws CartCannotBeCreatedException {
-        return cartRepository.findById(id).orElseThrow(CartCannotBeCreatedException::new);
+    public Cart getCartById(UUID cartId) {
+        return cartRepository.findById(cartId)
+                .orElseThrow(CartNotFoundException::new);
     }
 
-    public Cart updateCart(Cart cart) throws CartCannotBeCreatedException {
-        Cart cartToUpdate = cartRepository.findById(cart.getId()).orElseThrow(CartCannotBeCreatedException::new);
-        cartToUpdate.setBuyer(cart.getBuyer());
-        cartToUpdate.setPrice(cart.getPrice());
-        cartToUpdate.setItems(cart.getItems());
-        cartToUpdate.setCreatedAt(cart.getCreatedAt());
-        cartToUpdate.setUpdatedAt(cartToUpdate.getUpdatedAt());
-        return cartRepository.save(cartToUpdate);
+    public void clearCart(UUID cartId) {
+        Cart cart = getCartById(cartId);
+        cart.getItems().clear();
+        cartRepository.save(cart);
+        cartItemRepository.deleteAll(cart.getItems());
     }
-
-    public void deleteCart(UUID id, Cart cart) throws CartCannotBeCreatedException {
-        Cart cartToDelete = cartRepository.findById(cart.getId()).orElseThrow(CartCannotBeCreatedException::new);
-        cartRepository.delete(cartToDelete);
-    }
-
 }

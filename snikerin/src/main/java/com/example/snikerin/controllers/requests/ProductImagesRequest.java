@@ -1,4 +1,4 @@
-package com.example.snikerin.controllers.Requests;
+package com.example.snikerin.controllers.requests;
 
 import java.util.List;
 import java.util.UUID;

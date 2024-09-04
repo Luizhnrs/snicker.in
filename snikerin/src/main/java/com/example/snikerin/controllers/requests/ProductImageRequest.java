@@ -1,8 +1,5 @@
-package com.example.snikerin.controllers.Requests;
+package com.example.snikerin.controllers.requests;
 
-
-
-import java.util.UUID;
 
 public record ProductImageRequest(String filename, String base64String) {
 }

@@ -1,9 +1,9 @@
 package com.example.snikerin.services;
 
-import com.example.snikerin.controllers.Requests.ProductImageRequest;
+import com.example.snikerin.controllers.requests.ProductImageRequest;
 import com.example.snikerin.exceptions.ProductNotFoundException;
 import com.example.snikerin.models.ProductImage;
-import com.example.snikerin.models.Products;
+import com.example.snikerin.models.Product;
 import com.example.snikerin.repositories.ProductImageRepository;
 import com.example.snikerin.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
@@ -42,7 +42,7 @@ public class ProductImageService {
             directory.mkdirs();
         }
 
-        Products foundProduct = productRepository.findById(productId)
+        Product foundProduct = productRepository.findById(productId)
                 .orElseThrow(ProductNotFoundException::new);
 
         return imageRequests.stream().map(request -> {
@@ -63,7 +63,7 @@ public class ProductImageService {
                     Files.write(filePath, imageBytes);
 
                     String fileUrl = "/uploads/" + fileName;
-                    ProductImage productImage = new ProductImage(fileUrl, foundProduct);
+                    ProductImage productImage = new ProductImage(null, fileUrl, foundProduct);
                     return productImageRepository.save(productImage);
                 } else {
                     throw new IllegalArgumentException("Invalid file extension in filename: " + request.filename());

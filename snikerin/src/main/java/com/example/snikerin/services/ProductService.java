@@ -1,49 +1,50 @@
 package com.example.snikerin.services;
 
 import com.example.snikerin.exceptions.ProductNotFoundException;
-import com.example.snikerin.models.Products;
+import com.example.snikerin.models.Product;
 import com.example.snikerin.repositories.ProductRepository;
-import com.example.snikerin.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository, UserRepository userRepository) {
-        this.productRepository = productRepository;
-    }
-
-    public Products createProduct(Products product) {
+    public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
-    public Products getProductById(UUID id) throws ProductNotFoundException {
+    public Product getProductById(UUID id) throws ProductNotFoundException {
         return productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
     }
 
-    public List<Products> getAllProducts() {
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Products updateProduct(UUID id, Products product) {
-        Products productSearched = productRepository.findById(id).get();
-        productSearched.setProductName(product.getProductName());
-        productSearched.setProductDescription(product.getProductDescription());
-        productSearched.setProductPrice(product.getProductPrice());
-        productSearched.setProductBrand(product.getProductBrand());
-        productSearched.setProductCategory(product.getProductCategory());
-        productSearched.setProductImages(product.getProductImages());
-        productSearched.setProductOnSale(product.isProductOnSale());
-        return productRepository.save(productSearched);
+    public Product updateProduct(UUID id, Product updatedProduct) throws ProductNotFoundException {
+        Product existingProduct = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setDescription(updatedProduct.getDescription());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setCategory(updatedProduct.getCategory());
+        existingProduct.setSizes(updatedProduct.getSizes());
+        existingProduct.setBrand(updatedProduct.getBrand());
+        existingProduct.setImages(updatedProduct.getImages());
+        existingProduct.setOnSale(updatedProduct.isOnSale());
+        existingProduct.setSalePrice(updatedProduct.getSalePrice());
+
+        return productRepository.save(existingProduct);
     }
 
-    public void deleteProduct(UUID id) throws ProductNotFoundException{
-        Products productToDelete = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
+    public void deleteProduct(UUID id) throws ProductNotFoundException {
+        Product productToDelete = productRepository.findById(id).orElseThrow(ProductNotFoundException::new);
         productRepository.delete(productToDelete);
     }
 }
-

@@ -3,6 +3,7 @@ package com.example.snikerin.services;
 import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.User;
 import com.example.snikerin.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,17 +14,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
     public User createUser(User user) {
-        String hashedPassword = new BCryptPasswordEncoder()
-                .encode(user.getPassword());
-        user.setPassword(hashedPassword);
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -32,17 +28,18 @@ public class UserService implements UserDetailsService {
     }
 
     public User getUserById(UUID id) throws UserNotFoundException {
-     return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
-    public User updateUser(UUID id, User user) throws UserNotFoundException {
-        User userSearched = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
-        userSearched.setFirstName(user.getFirstName());
-        userSearched.setLastName(user.getLastName());
-        userSearched.setCpfCnpj(user.getCpfCnpj());
-        userSearched.setEmail(user.getEmail());
-        userSearched.setPassword(user.getPassword());
-        return userRepository.save(userSearched);
+    public User updateUser(UUID id, User updatedUser) throws UserNotFoundException {
+        User existingUser = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+
+        existingUser.setFirstName(updatedUser.getFirstName());
+        existingUser.setLastName(updatedUser.getLastName());
+        existingUser.setCpf(updatedUser.getCpf());
+        existingUser.setEmail(updatedUser.getEmail());
+
+        return userRepository.save(existingUser);
     }
 
     public void deleteUser(UUID id) throws UserNotFoundException {
@@ -50,9 +47,14 @@ public class UserService implements UserDetailsService {
         userRepository.delete(userToDelete);
     }
 
+    public User getByEmail(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException(email));
+                .orElseThrow(UserNotFoundException::new);
     }
 }

@@ -15,8 +15,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_users")
+@Table(name = "users")
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -27,8 +28,8 @@ public class User implements UserDetails {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "cpfCnpj", unique = true, nullable = false)
-    private String cpfCnpj;
+    @Column(name = "cpf", unique = true, nullable = false)
+    private String cpf;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
@@ -36,20 +37,12 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addresses;
+
     @OneToMany(mappedBy = "user")
-    private List<Orders> orders;
+    private List<Cart> carts;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "cart_id")
-    private Cart cart;
-
-    public User(String firstName, String lastName, String cpfCnpj, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cpfCnpj = cpfCnpj;
-        this.email = email;
-        this.password = password;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
