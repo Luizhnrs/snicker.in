@@ -18,6 +18,9 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(name = "quantity", nullable = false)
+    private int quantity;
+
     @ManyToOne
     @JoinColumn(name = "cart_id", nullable = false)
     private Cart cart;
@@ -25,7 +28,4 @@ public class CartItem {
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
-
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
 }
