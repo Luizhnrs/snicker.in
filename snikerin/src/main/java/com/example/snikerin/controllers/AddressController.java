@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class AddressController {
     private final AddressService addressService;
 
     @PostMapping("/{userId}")
-    public ResponseEntity<AddressResponse> createAddress(@RequestBody AddressRequest addressRequest, @PathVariable UUID userId) {
+    public ResponseEntity<AddressResponse> createAddress(@Valid @RequestBody AddressRequest addressRequest, @PathVariable UUID userId) {
         Address address = addressRequest.toEntity();
         Address createdAddress = addressService.createAddress(userId, address);
         return ResponseEntity.status(HttpStatus.CREATED).body(convertToResponse(createdAddress));
@@ -42,7 +43,7 @@ public class AddressController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AddressResponse> updateAddress(@PathVariable UUID id, @RequestBody AddressRequest addressRequest) {
+    public ResponseEntity<AddressResponse> updateAddress(@PathVariable UUID id, @Valid @RequestBody AddressRequest addressRequest) {
         Address address = addressRequest.toEntity();
         Address updatedAddress = addressService.updateAddress(id, address);
         return ResponseEntity.ok(convertToResponse(updatedAddress));

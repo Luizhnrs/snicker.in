@@ -44,6 +44,9 @@ public class Product {
     @Column(name = "sale_price")
     private BigDecimal salePrice;
 
+    @OneToMany(mappedBy = "product")
+    private List<CartItem> cartItems;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductImage> images = new ArrayList<>();
+    private List<ProductImage> images;
 }

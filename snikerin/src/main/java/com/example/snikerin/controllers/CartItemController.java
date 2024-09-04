@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -23,8 +24,10 @@ public class CartItemController {
 
     private final CartItemService cartItemService;
 
-    @PostMapping
-    public ResponseEntity<CartItemResponse> createCartItem(@RequestParam UUID cartId, @RequestParam UUID productId, @RequestBody CartItemRequest cartItemRequest) {
+    @PostMapping("/{cartId}/{productId}")
+    public ResponseEntity<CartItemResponse> createCartItem(@PathVariable UUID cartId,
+                                                           @PathVariable UUID productId,
+                                                           @Valid @RequestBody CartItemRequest cartItemRequest) {
         CartItem cartItem = cartItemRequest.toEntity();
         CartItem createdCartItem = cartItemService.createCartItem(cartId, productId, cartItem);
         return new ResponseEntity<>(toCartItemResponse(createdCartItem), HttpStatus.CREATED);
@@ -37,7 +40,8 @@ public class CartItemController {
     }
 
     @PutMapping("/{cartItemId}")
-    public ResponseEntity<CartItemResponse> updateCartItem(@PathVariable UUID cartItemId, @RequestBody CartItemRequest cartItemRequest) {
+    public ResponseEntity<CartItemResponse> updateCartItem(@PathVariable UUID cartItemId,
+                                                           @Valid @RequestBody CartItemRequest cartItemRequest) {
         CartItem cartItem = cartItemRequest.toEntity();
         CartItem updatedCartItem = cartItemService.updateCartItem(cartItemId, cartItem);
         return new ResponseEntity<>(toCartItemResponse(updatedCartItem), HttpStatus.OK);

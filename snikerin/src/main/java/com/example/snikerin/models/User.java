@@ -40,6 +40,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses;
 
+    @OneToMany(mappedBy = "user")
+    private List<Cart> carts;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

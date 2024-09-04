@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ResponseEntity<ProductResponse> registerProduct(@RequestBody ProductRequest productRequest) {
+    public ResponseEntity<ProductResponse> registerProduct(@Valid @RequestBody ProductRequest productRequest) {
         Product product = productService.createProduct(productRequest.toEntity());
         ProductResponse productResponse = convertToProductResponse(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(productResponse);
@@ -43,7 +44,8 @@ public class ProductController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<ProductResponse> updateProduct(@PathVariable UUID id, @RequestBody ProductRequest productRequest) {
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable UUID id,
+                                                         @Valid @RequestBody ProductRequest productRequest) {
         Product product = productService.updateProduct(id, productRequest.toEntity());
         ProductResponse productResponse = convertToProductResponse(product);
         return ResponseEntity.ok(productResponse);
