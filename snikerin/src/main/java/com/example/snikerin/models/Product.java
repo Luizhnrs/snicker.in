@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +31,9 @@ public class Product {
 
     @Column(name = "category", nullable = false)
     private String category;
+
+    @Column(name = "sizes")
+    private String sizes;
 
     @Column(name = "brand", nullable = false)
     private String brand;

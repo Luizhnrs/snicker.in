@@ -66,6 +66,7 @@ public class ProductsController {
                         .map(image -> new ProductImageResponse(image.getId(), image.getImageUrl(), product.getId()))
                         .collect(Collectors.toList()),
                 product.getCategory(),
+                product.getSizes(),
                 product.getBrand(),
                 product.isOnSale(),
                 product.getSalePrice()

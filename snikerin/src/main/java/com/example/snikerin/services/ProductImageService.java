@@ -63,7 +63,7 @@ public class ProductImageService {
                     Files.write(filePath, imageBytes);
 
                     String fileUrl = "/uploads/" + fileName;
-                    ProductImage productImage = new ProductImage(fileUrl, foundProduct);
+                    ProductImage productImage = new ProductImage(null, fileUrl, foundProduct);
                     return productImageRepository.save(productImage);
                 } else {
                     throw new IllegalArgumentException("Invalid file extension in filename: " + request.filename());

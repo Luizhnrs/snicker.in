@@ -24,6 +24,8 @@ public record ProductRequest(
         @NotBlank(message = "A marca é obrigatório")
         String brand,
 
+        String sizes,
+
         Boolean onSale,
 
         @DecimalMin(value = "0.0", inclusive = false, message = "O preço deve ser maior que 0")
@@ -36,6 +38,7 @@ public record ProductRequest(
                 price,
                 description,
                 category,
+                sizes,
                 brand,
                 onSale,
                 salePrice,

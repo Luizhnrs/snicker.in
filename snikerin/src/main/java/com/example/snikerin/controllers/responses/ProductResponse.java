@@ -11,6 +11,7 @@ public record ProductResponse(
         String description,
         List<ProductImageResponse> images,
         String category,
+        String sizes,
         String brand,
         Boolean onSale,
         BigDecimal salePrice
