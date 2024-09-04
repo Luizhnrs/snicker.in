@@ -38,19 +38,14 @@ public class User implements UserDetails {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Orders> orders;
+    private List<Address> addresses;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private Cart cart;
-
-    public User(String firstName, String lastName, String cpf, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.cpf = cpf;
-        this.email = email;
-        this.password = password;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

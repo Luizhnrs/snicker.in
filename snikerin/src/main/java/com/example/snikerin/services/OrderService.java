@@ -1,7 +1,7 @@
 package com.example.snikerin.services;
 
 import com.example.snikerin.exceptions.OrderCannotBeCreatedException;
-import com.example.snikerin.models.Orders;
+import com.example.snikerin.models.Order;
 import com.example.snikerin.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,20 +15,20 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Orders createOrder(Orders order) {
+    public Order createOrder(Order order) {
         return orderRepository.save(order);
     }
 
-    public List<Orders> getAllOrders() {
+    public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
 
-    public Orders getOrderById(UUID id) throws OrderCannotBeCreatedException {
+    public Order getOrderById(UUID id) throws OrderCannotBeCreatedException {
         return orderRepository.findById(id).orElseThrow(OrderCannotBeCreatedException::new);
     }
 
-    public Orders updateOrder(UUID id, Orders order) throws OrderCannotBeCreatedException {
-        Orders orderToUpdate = orderRepository.findById(id).orElseThrow(OrderCannotBeCreatedException::new);
+    public Order updateOrder(UUID id, Order order) throws OrderCannotBeCreatedException {
+        Order orderToUpdate = orderRepository.findById(id).orElseThrow(OrderCannotBeCreatedException::new);
         orderToUpdate.setAddress(order.getAddress());
         orderToUpdate.setCity(order.getCity());
         orderToUpdate.setCountry(order.getCountry());
@@ -44,7 +44,7 @@ public class OrderService {
     }
 
     public void deleteOrder(UUID id) throws OrderCannotBeCreatedException {
-        Orders orderToDelete = orderRepository.findById(id).orElseThrow(OrderCannotBeCreatedException::new);
+        Order orderToDelete = orderRepository.findById(id).orElseThrow(OrderCannotBeCreatedException::new);
         orderRepository.delete(orderToDelete);
     }
 }

@@ -3,7 +3,6 @@ package com.example.snikerin.models;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UuidGenerator;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -17,31 +16,24 @@ import java.util.UUID;
 @Table(name = "products")
 public class Product {
     @Id
-    @GeneratedValue
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotNull
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @NotNull
     @Column(name = "description", nullable = false, length = 1000)
     private String description;
 
-    @NotNull
     @Column(name = "category", nullable = false)
     private String category;
 
-    @NotNull
     @Column(name = "brand", nullable = false)
     private String brand;
 
-    @NotNull
     @Column(name = "on_sale", nullable = false)
     private boolean onSale;
 

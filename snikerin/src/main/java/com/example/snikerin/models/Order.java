@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_orders")
-public class Orders {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -47,6 +47,6 @@ public class Orders {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Orders(String firstName, String lastName, String email, String phone, String address, String city, String reference, String state, String cep, String country, BigDecimal amount, String notes) {
+    public Order(String firstName, String lastName, String email, String phone, String address, String city, String reference, String state, String cep, String country, BigDecimal amount, String notes) {
     }
 }
