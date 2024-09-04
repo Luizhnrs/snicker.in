@@ -24,6 +24,6 @@ public record UserRequest(
         String password
 ) {
     public User toEntity() {
-        return new User(null, firstName, lastName, cpf, email, password, null, null);
+        return new User(null, firstName, lastName, cpf, email, password, null, null, null);
     }
 }

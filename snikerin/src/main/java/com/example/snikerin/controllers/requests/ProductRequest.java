@@ -43,6 +43,7 @@ public record ProductRequest(
                 onSale,
                 salePrice,
                 null,
+                null,
                 null
         );
     }
