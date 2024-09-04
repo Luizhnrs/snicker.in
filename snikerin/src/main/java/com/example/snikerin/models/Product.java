@@ -1,6 +1,7 @@
 package com.example.snikerin.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "products")
 public class Product {
@@ -42,15 +44,4 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductImage> images = new ArrayList<>();
-
-    public Product(String name, BigDecimal price, String description, String category, String brand, Boolean onSale, BigDecimal salePrice) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.category = category;
-        this.brand = brand;
-        this.onSale = onSale;
-        this.salePrice = salePrice;
-        this.images = new ArrayList<>();
-    }
 }
