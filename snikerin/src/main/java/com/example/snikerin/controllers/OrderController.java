@@ -1,5 +1,6 @@
 package com.example.snikerin.controllers;
 
+import com.example.snikerin.controllers.requests.OrderRequest;
 import com.example.snikerin.controllers.responses.OrderResponse;
 import com.example.snikerin.controllers.responses.OrderItemResponse;
 import com.example.snikerin.controllers.responses.ProductImageResponse;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,8 +31,8 @@ public class OrderController {
     @PostMapping("/{userId}")
     public ResponseEntity<OrderResponse> createOrder(
             @PathVariable UUID userId,
-            @RequestBody Order order) {
-        Order createdOrder = orderService.createOrder(userId, order);
+            @Valid @RequestBody OrderRequest orderRequest) {
+        Order createdOrder = orderService.createOrder(userId, orderRequest.toEntity());
         return new ResponseEntity<>(toOrderResponse(createdOrder), HttpStatus.CREATED);
     }
 
@@ -50,8 +52,8 @@ public class OrderController {
     }
 
     @PutMapping("/{orderId}")
-    public ResponseEntity<OrderResponse> updateOrder(@PathVariable UUID orderId, @RequestBody Order order) {
-        Order updatedOrder = orderService.updateOrder(orderId, order);
+    public ResponseEntity<OrderResponse> updateOrder(@PathVariable UUID orderId, @Valid @RequestBody OrderRequest orderRequest) {
+        Order updatedOrder = orderService.updateOrder(orderId, orderRequest.toEntity());
         return new ResponseEntity<>(toOrderResponse(updatedOrder), HttpStatus.OK);
     }
 

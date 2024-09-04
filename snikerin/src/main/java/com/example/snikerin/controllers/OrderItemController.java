@@ -1,5 +1,6 @@
 package com.example.snikerin.controllers;
 
+import com.example.snikerin.controllers.requests.OrderItemRequest;
 import com.example.snikerin.controllers.responses.OrderItemResponse;
 import com.example.snikerin.controllers.responses.ProductImageResponse;
 import com.example.snikerin.controllers.responses.ProductResponse;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -25,8 +27,8 @@ public class OrderItemController {
     public ResponseEntity<OrderItemResponse> createOrderItem(
             @PathVariable UUID orderId,
             @PathVariable UUID productId,
-            @RequestBody OrderItem orderItem) {
-        OrderItem createdOrderItem = orderItemService.createOrderItem(orderId, productId,orderItem);
+            @Valid @RequestBody OrderItemRequest orderItemRequest) {
+        OrderItem createdOrderItem = orderItemService.createOrderItem(orderId, productId, orderItemRequest.toEntity());
         return new ResponseEntity<>(toOrderItemResponse(createdOrderItem), HttpStatus.CREATED);
     }
 
