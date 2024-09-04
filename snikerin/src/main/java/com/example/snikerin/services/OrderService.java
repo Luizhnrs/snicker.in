@@ -5,10 +5,8 @@ import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.Order;
 import com.example.snikerin.models.User;
 import com.example.snikerin.repositories.OrderRepository;
-import com.example.snikerin.repositories.OrderItemRepository;
 import com.example.snikerin.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
