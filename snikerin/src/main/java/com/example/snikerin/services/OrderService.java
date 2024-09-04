@@ -1,9 +1,12 @@
 package com.example.snikerin.services;
 
 import com.example.snikerin.exceptions.OrderNotFoundException;
+import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.Order;
+import com.example.snikerin.models.User;
 import com.example.snikerin.repositories.OrderRepository;
 import com.example.snikerin.repositories.OrderItemRepository;
+import com.example.snikerin.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +18,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderService {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private OrderItemRepository orderItemRepository;
-
-    public Order createOrder(Order order) {
+    public Order createOrder(UUID userId, Order order) {
+        User foundUser = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
+        order.setUser(foundUser);
         return orderRepository.save(order);
     }
 

@@ -1,12 +1,16 @@
 package com.example.snikerin.services;
 
 import com.example.snikerin.exceptions.OrderItemNotFoundException;
+import com.example.snikerin.exceptions.OrderNotFoundException;
+import com.example.snikerin.exceptions.ProductNotFoundException;
+import com.example.snikerin.models.Order;
 import com.example.snikerin.models.OrderItem;
+import com.example.snikerin.models.Product;
 import com.example.snikerin.repositories.OrderItemRepository;
+import com.example.snikerin.repositories.OrderRepository;
+import com.example.snikerin.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -15,11 +19,15 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderItemService {
 
-    @Autowired
-    private OrderItemRepository orderItemRepository;
+    private final OrderItemRepository orderItemRepository;
+    private final OrderRepository orderRepository;
+    private final ProductRepository productRepository;
 
-    @Transactional
-    public OrderItem createOrderItem(OrderItem orderItem) {
+    public OrderItem createOrderItem(UUID orderId, UUID productId, OrderItem orderItem) {
+        Order foundOrder = orderRepository.findById(orderId).orElseThrow(OrderNotFoundException::new);
+        Product foundProduct = productRepository.findById(productId).orElseThrow(ProductNotFoundException::new);
+        orderItem.setOrder(foundOrder);
+        orderItem.setProduct(foundProduct);
         return orderItemRepository.save(orderItem);
     }
 
