@@ -48,9 +48,14 @@ public class UserService implements UserDetailsService {
         userRepository.delete(userToDelete);
     }
 
+    public User getByEmail(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException(email));
+                .orElseThrow(UserNotFoundException::new);
     }
 }

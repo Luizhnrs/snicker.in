@@ -1,4 +1,4 @@
 package com.example.snikerin.controllers.responses;
 
-public record LoginResponse(String token) {
+public record LoginResponse(String token, UserResponse userResponse) {
 }

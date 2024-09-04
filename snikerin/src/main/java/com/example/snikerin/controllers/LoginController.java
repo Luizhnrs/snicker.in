@@ -2,7 +2,10 @@ package com.example.snikerin.controllers;
 
 import com.example.snikerin.controllers.requests.LoginRequest;
 import com.example.snikerin.controllers.responses.LoginResponse;
+import com.example.snikerin.controllers.responses.UserResponse;
+import com.example.snikerin.models.User;
 import com.example.snikerin.services.TokenService;
+import com.example.snikerin.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,8 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
-
     private final TokenService tokenService;
+    private final UserService userService;
 
     @PostMapping()
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
@@ -31,6 +34,15 @@ public class LoginController {
 
         String token = tokenService.generateToken(auth.getName());
 
-        return ResponseEntity.ok(new LoginResponse(token));
+        User user = userService.getByEmail(loginRequest.email());
+        UserResponse userResponse = new UserResponse(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getCpf(),
+                user.getEmail()
+        );
+
+        return ResponseEntity.ok(new LoginResponse(token, userResponse));
     }
 }
