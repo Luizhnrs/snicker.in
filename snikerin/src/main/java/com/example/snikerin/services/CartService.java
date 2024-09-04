@@ -1,10 +1,12 @@
 package com.example.snikerin.services;
 
 import com.example.snikerin.exceptions.CartNotFoundException;
+import com.example.snikerin.exceptions.UserNotFoundException;
 import com.example.snikerin.models.Cart;
-import com.example.snikerin.models.CartItem;
+import com.example.snikerin.models.User;
 import com.example.snikerin.repositories.CartRepository;
 import com.example.snikerin.repositories.CartItemRepository;
+import com.example.snikerin.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,29 +18,19 @@ public class CartService {
 
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
+    private final UserRepository userRepository;
 
-    public Cart createCart(Cart cart) {
+    public Cart createCart(UUID userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(UserNotFoundException::new);
+
+        Cart cart = new Cart(null, user, null);
         return cartRepository.save(cart);
     }
 
     public Cart getCartById(UUID cartId) {
         return cartRepository.findById(cartId)
                 .orElseThrow(CartNotFoundException::new);
-    }
-
-    public Cart addItemToCart(UUID cartId, CartItem cartItem) {
-        Cart cart = getCartById(cartId);
-        cart.getItems().add(cartItem);
-        cartItem.setCart(cart);
-        cartItemRepository.save(cartItem);
-        return cartRepository.save(cart);
-    }
-
-    public void removeItemFromCart(UUID cartId, UUID cartItemId) {
-        Cart cart = getCartById(cartId);
-        cart.getItems().removeIf(cartItem -> cartItem.getId().equals(cartItemId));
-        cartRepository.save(cart);
-        cartItemRepository.deleteById(cartItemId);
     }
 
     public void clearCart(UUID cartId) {
